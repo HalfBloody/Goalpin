@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'challenge_typus/index'
+
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
   root 'challenges#index'
 

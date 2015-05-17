@@ -1,8 +1,24 @@
 Check your current challenges
-
-<% @challenges.each do |challenge| %>
-  <%= challenge.
+<% if @challenges %>
+  <% @challenges.each do |challenge| %>
+    <div>
+      <%= challenge.typus %>
+    </div>
+    <div>
+      <%= challenge.end_date %>
+    </div>
+    <div>
+      <%= "%{challenge.time_progress *100}% of time has passed." %>
+    </div>
+    <div>
+      <%= challenge.end_date %>
+    </div>
+  <% end %>
+<% else %>
+<div>
+  Start a new challenge! %>
+</div>
 <% end %>
-<%= link_to "Add a new challenge", new_challenge_path %>
+<%= link_to "Add a new challenge", challenge_typus_path %>
 
 <%= debug current_user %>

@@ -1,4 +1,4 @@
-class ChallengesController < ApplicationController
+lclass ChallengesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
@@ -6,6 +6,7 @@ class ChallengesController < ApplicationController
   end
 
   def new
+    @challenge = Challenge.new
   end
 
   def create

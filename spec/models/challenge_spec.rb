@@ -23,4 +23,6 @@ RSpec.describe Challenge, type: :model do
       expect(run.time_progress).to eq(0)
     end
   end
+
+  
 end
