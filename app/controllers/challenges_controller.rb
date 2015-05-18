@@ -9,7 +9,8 @@ class ChallengesController < ApplicationController
   def new
     @typus = 'gone' #params[:typus]
     @challenge = Challenge.new
-    @challenge.start_date = Time.now
+    @milestones = [12, 13, 14]
+    @days = [30, 26, 22]
   end
 
   def create

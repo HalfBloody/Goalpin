@@ -3,10 +3,21 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on "page:change", ->
-  start_date_text = $("#challenge_start_date").val()
-  start_date = moment(start_date_text)
-
-  $("#30_days").click ->
-    $('#challenge_end_date').val(555)
-    alert(start_date_text)
   
+  start_date = moment().endOf('day')
+  end_date = moment().add(30, 'days')
+  $('#challenge_start_date').val(start_date)
+
+
+  $(".days").click ->
+    days = $(this).data("days")
+    end_date = moment(start_date)
+    console.log $(this).data("days")
+    end_date.add(days, 'days')
+    $('#challenge_end_date').val(end_date)
+
+  $(".times").click ->
+    times = $(this).data("times")  
+    $('#challenge_number_of_milestones').val(times)
+    
+    
