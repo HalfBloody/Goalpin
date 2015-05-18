@@ -1,0 +1,2 @@
+module ChallengeTypeHelper
+end

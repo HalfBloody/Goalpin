@@ -1,0 +1,16 @@
+<h1>Pick the challenge you like</h1>
+
+<ul>
+  <li>
+    <%= link_to "Running Challenge", new_challenge_path(typus: 'running') %>
+  </li>
+  <li>
+    <%= link_to "Healthy food Challenge", new_challenge_path(typus: 'food') %>
+  </li>
+  <li>
+    <%= link_to "Morning Challenge", new_challenge_path(typus: 'wake_up') %>
+  </li>
+  <li>
+    <%= link_to "Exercise Challenge", new_challenge_path(typus: 'exercise') %>
+  </li>
+</ul>

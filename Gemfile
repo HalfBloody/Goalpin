@@ -56,3 +56,8 @@ gem 'omniauth'
 gem 'omniauth-digitalocean'
 gem 'omniauth-facebook'
 gem 'koala'
+
+
+# Front
+gem 'momentjs-rails'
+gem 'simple_form'

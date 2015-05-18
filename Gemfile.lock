@@ -111,6 +111,8 @@ GEM
     mime-types (2.5)
     mini_portile (0.6.2)
     minitest (5.6.1)
+    momentjs-rails (2.10.2)
+      railties (>= 3.1)
     multi_json (1.11.0)
     multi_test (0.1.2)
     multi_xml (0.5.5)
@@ -193,6 +195,9 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     slop (3.6.0)
     spork (1.0.0rc4)
     spork-rails (4.0.0)
@@ -243,6 +248,7 @@ DEPENDENCIES
   jquery-rails
   koala
   launchy
+  momentjs-rails
   omniauth
   omniauth-digitalocean
   omniauth-facebook
@@ -252,6 +258,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   selenium-webdriver
   shoulda-matchers
+  simple_form
   spork-rails
   spring
   sqlite3
