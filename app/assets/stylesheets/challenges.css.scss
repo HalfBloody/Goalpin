@@ -1,3 +1,36 @@
 // Place all the styles related to the challenges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  background-color: #984AE2;
+}
+
+.second_layer {
+  background: #FFFFFF;
+  border: 1px solid #979797;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+}
+
+.button {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  margin: 4px;
+  background: #638BBA;
+  font-family: Helvetica;
+  border-radius: 4px;
+  font-family: Helvetica;
+}
+
+.active {
+  background: #004400;
+}
+
+.button_box {
+  height: 50px;
+  width: 150px;
+}
