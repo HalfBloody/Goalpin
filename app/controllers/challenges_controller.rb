@@ -14,8 +14,22 @@ class ChallengesController < ApplicationController
   end
 
   def create
+    @challenge = Challenge.create(challenge_params)
+    if @challenge
+      flash[:notice] = "Challenge created"
+      redirect_to new_user_relation_path
+    else
+      flash[:notice] = "Challenge couldn't be created"
+      redirect_to :back
+    end
   end
 
   def show
+  end
+
+  private
+
+  def challenge_params
+    params.require(:challenge).permit(:start_date, :end_date, :typus, :number_of_milestones)
   end
 end

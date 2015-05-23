@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  
+
   get 'challenge_type/index'
 
   get 'challenge_typus/index'
@@ -9,8 +11,9 @@ Rails.application.routes.draw do
   root 'challenges#index'
 
 
-  resources :challenges, only: [ :index, :show, :new, :create ]
-
+  resources :challenges, only: [ :index, :show, :new, :create ] do
+    resources :user_relations, only: [ :new ]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
