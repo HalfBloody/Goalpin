@@ -1,38 +1,50 @@
 <div class="background_color">
   <div class="second_layer">
-    <h2>How long should the challenge go?</h2>
+    <h1>Define your Running Challenge</h1>
+       <div class="day_button_box" 
+        data-initial=<%= "#{@days.first}" %>
+       >
+        <h4>How many days will your challenge go?</h4>
+        <div class="row">
+          <% @days.each do |day| %>
 
-       <div class="button_box">
-        <% @days.each do |day| %>
-          <%= content_tag :span,
-          day, 
-          class: ["button", "days", "inactive"],
-          id: "#{day}_days",
-          "data-days" => "#{day}"
-          %>
-        <% end %>
+              <%= link_to day, 
+              '#',
+              { class: ["small", "button", "days", "inactive"],
+              id: "#{day}_days",
+              "data-days" => "#{day}" }
+              %>
+            
+          <% end %>
+        </div>
       </div>
 
 
-
-      <div class="button_box">
-        <% @milestones.each do |milestone| %>
-          <%= content_tag :span,
-          milestone, 
-          class: ["button", "times", "inactive"],
-          id: "#{milestone}_times",
-          "data-times" => "#{milestone}"
-          %>
-        <% end %>
+    
+      <div class="milestones_box hidden"
+        data-initial= <%= "#{@milestones.first}" %>
+      >
+        <h4>How many runs will you complete during your challenge?</h4>
+        <div class="row">
+          <% @milestones.each do |milestone| %>
+            <%= link_to milestone, 
+            '#',
+            { class: ["small", "button", "times", "inactive"],
+            id: "#{milestone}_times",
+            "data-times" => "#{milestone}" }
+            %>
+          <% end %>
+        </div>      
       </div>
-
-    <%= simple_form_for @challenge do |f| %>
-      <%= f.input :start_date, as: :hidden %>
-      <%= f.input :end_date, as: :hidden,  input_html: { value: Time.now + 30.days } %>
-      <%= f.input :typus, as: :hidden,  input_html: { value: @typus } %>
-      <%= f.input :number_of_milestones, as: :hidden, input_html: { value: @milestones.first } %>
-      <%= f.button :submit %>
-
-    <% end %>
+    <div class="hidden submit_box">
+      <h4>Alright, let's get on with this challenge :)</h4>
+      <%= simple_form_for @challenge do |f| %>
+        <%= f.input :start_date, as: :hidden %>
+        <%= f.input :end_date, as: :hidden,  input_html: { value: Time.now + @days.first.days } %>
+        <%= f.input :typus, as: :hidden,  input_html: { value: @typus } %>
+        <%= f.input :number_of_milestones, as: :hidden, input_html: { value: @milestones.first } %>
+        <%= f.button :submit %>
+      <% end %>
+    </div>
   </div>
 </div>

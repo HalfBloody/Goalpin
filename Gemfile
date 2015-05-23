@@ -61,3 +61,4 @@ gem 'koala'
 # Front
 gem 'momentjs-rails'
 gem 'simple_form'
+gem 'foundation-rails'
