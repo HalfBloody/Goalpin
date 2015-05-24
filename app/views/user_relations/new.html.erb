@@ -1,2 +1,8 @@
-<h1>UserRelations#new</h1>
-<p>Find me in app/views/user_relations/new.html.erb</p>
+
+<h1>Now invite friends to support you in your challenge</h1>
+
+<%= simple_form_for [@challenge, @user_relation] do |f| %>
+  <%= f.input :email %>
+  <%= f.input :challenge_id, as: :hidden, input_html: { value: @challenge.id } %>
+  <%= f.button :submit %>
+<% end %>

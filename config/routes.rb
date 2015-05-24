@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
 
   resources :challenges, only: [ :index, :show, :new, :create ] do
-    resources :user_relations, only: [ :new ]
+    resources :user_relations, only: [ :new, :create, :index ]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

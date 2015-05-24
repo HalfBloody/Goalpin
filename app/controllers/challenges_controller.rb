@@ -7,7 +7,7 @@ class ChallengesController < ApplicationController
   end
 
   def new
-    @typus = 'gone' #params[:typus]
+    @typus = 'running'
     @challenge = Challenge.new
     @milestones = [12, 13, 14]
     @days = [30, 26, 22]
@@ -16,8 +16,9 @@ class ChallengesController < ApplicationController
   def create
     @challenge = Challenge.create(challenge_params)
     if @challenge
+      puts params.to_json
       flash[:notice] = "Challenge created"
-      redirect_to new_user_relation_path
+      redirect_to new_challenge_user_relation_path(@challenge)
     else
       flash[:notice] = "Challenge couldn't be created"
       redirect_to :back
