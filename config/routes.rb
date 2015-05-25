@@ -3,16 +3,12 @@ Rails.application.routes.draw do
 
   
 
-  get 'challenge_type/index'
-
-  get 'challenge_typus/index'
-
-  devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
+  
   root 'challenges#index'
-
+  devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 
   resources :challenges, only: [ :index, :show, :new, :create ] do
-    resources :user_relations, only: [ :new, :create, :index ]
+    resources :invites, only: [ :new, :create ]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,18 +1,17 @@
 class InvitesController < ApplicationController
+  before_filter :authenticate_user!
+
   def new
     @invite = Invite.new
-    puts params
+    @invites = Challenge.find(params[:challenge_id]).invites.order(created_at: :desc)
     @challenge = Challenge.find(params[:challenge_id])
   end
 
   def create
-
     @invite = Invite.create(invite_params)
-    redirect_to :back
-  end
-
-  def index
-
+    @invites = Challenge.find(params[:challenge_id]).invites.order(created_at: :desc)
+    InviteMailer.invite_email(@invite)
+    respond_to :js
   end
 
   private

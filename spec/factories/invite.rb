@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :user_relation do
+  factory :invite do
     parent_id ""
 child_id ""
   end

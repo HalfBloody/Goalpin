@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe UserRelationsController, type: :controller do
+RSpec.describe InvitesController, type: :controller do
 
   describe "GET #new" do
     it "returns http success" do

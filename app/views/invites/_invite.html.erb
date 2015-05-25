@@ -1,0 +1,19 @@
+
+<div class="invite-box row">
+  <div class="small-6 columns">
+    You invited <%= link_to invite.email, "#" %> <%= 
+    stringify_time_diff(TimeDifference.between(invite.
+    created_at, Time.now).in_general) %> ago.
+  </div>
+  <div class="small-6 columns label-box">
+    <% if invite.invited_id.nil? %>
+      <a class="button tiny alert radius right">
+        Resend invite
+      </a>
+    <% else %>
+      <div class="label success round right">
+        Invite successful
+      </div>
+    <% end %>
+  </div>  
+</div>
