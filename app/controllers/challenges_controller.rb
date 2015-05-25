@@ -3,7 +3,8 @@ class ChallengesController < ApplicationController
 
   def index
     @typus = ["running", "food"]
-    @challenges = Challenge.find_by(user_id: current_user.id)
+    @challenges = Challenge.where(user_id: current_user.id)
+    
   end
 
   def new
@@ -18,7 +19,7 @@ class ChallengesController < ApplicationController
     if @challenge
       puts params.to_json
       flash[:notice] = "Challenge created"
-      redirect_to new_challenge_user_relation_path(@challenge)
+      redirect_to new_challenge_invite_path(@challenge)
     else
       flash[:notice] = "Challenge couldn't be created"
       redirect_to :back
@@ -31,6 +32,6 @@ class ChallengesController < ApplicationController
   private
 
   def challenge_params
-    params.require(:challenge).permit(:start_date, :end_date, :typus, :number_of_milestones)
+    params.require(:challenge).permit(:start_date, :end_date, :typus, :number_of_milestones).merge(user_id: current_user.id)
   end
 end
