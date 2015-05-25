@@ -14,5 +14,10 @@ class Invite < ActiveRecord::Base
   belongs_to :challenge
   belongs_to :invited, class_name: "User"
 
+  validates :email, uniqueness: true, on: :create
+  validates :email, format: Devise::email_regexp
+
+
+
 end
 
