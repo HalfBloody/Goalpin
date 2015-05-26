@@ -5,7 +5,7 @@ class InvitedController < ApplicationController
     @challenger = @invite.chellenge.user
     if @invite?
       @user = User.create(email: @invite.email)
-      @invite.update_attributes(user_id: @user.id)
+      @invite.update_column(user_id: @user.id)
       flash[:message] = "Thank you for helping your friend with the challenge."
       redirect_to :show
     else
@@ -15,6 +15,6 @@ class InvitedController < ApplicationController
   end
 
   def show
-
+    pass
   end
 end
