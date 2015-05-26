@@ -3,13 +3,10 @@ class InvitedController < ApplicationController
   def create
     @invite = Invite.find_by(params[:token])
     @challenger = @invite.chellenge.user
-    if @invite? and @invite.user_id.nil?
+    if @invite?
       @user = User.create(email: @invite.email)
       @invite.update_attributes(user_id: @user.id)
-      flash[:message] = "Please create an account to help #{@challenger.email}"
-      redirect_to :show
-    elsif @invite
-      flash[:message] = "Thanks for coming back"
+      flash[:message] = "Thank you for helping your friend with the challenge."
       redirect_to :show
     else
       flash[:message] = "The challenge you were looking for doesn't exist."

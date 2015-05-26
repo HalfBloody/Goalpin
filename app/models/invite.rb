@@ -17,7 +17,16 @@ class Invite < ActiveRecord::Base
   # validates :email, uniqueness: true, on: :create
   validates :email, format: Devise::email_regexp
 
+  before_create :add_token
 
+
+
+  private
+
+  def add_token
+    token = SecureRandom.hex(30).upcase
+    self.token = token
+  end
 
 end
 
