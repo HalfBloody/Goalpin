@@ -8,9 +8,11 @@ class InvitesController < ApplicationController
   end
 
   def create
-    @invite = Invite.create(invite_params)
+    @invite = Invite.new(invite_params)    
+    if @invite.save
+      InviteMailer.invite_email(@invite)
+    end
     @invites = Challenge.find(params[:challenge_id]).invites.order(created_at: :desc)
-    InviteMailer.invite_email(@invite)
     respond_to :js
   end
 
