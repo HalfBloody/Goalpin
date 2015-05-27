@@ -9,11 +9,18 @@ Rails.application.routes.draw do
   root 'challenges#index'
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 
+
   resources :challenges, only: [ :index, :show, :new, :create ] do
     resources :invites, only: [ :new, :create ]
   end
 
   get 'mentors/:token', to: 'mentors#create', as: 'mentors_create'
+
+  resources :mentors
+
+  namespace :mentors do
+    resources :challenges, only: [:index, :show]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
