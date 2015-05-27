@@ -6,6 +6,14 @@ Rails.application.routes.draw do
   
   
 
+  namespace :mentors do
+  get 'challenges/index'
+  end
+
+  namespace :mentors do
+  get 'challenges/show'
+  end
+
   root 'challenges#index'
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 

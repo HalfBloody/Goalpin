@@ -1,0 +1,2 @@
+module Mentors::ChallengesHelper
+end
