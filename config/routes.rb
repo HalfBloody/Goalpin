@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :invites, only: [ :new, :create ]
   end
 
-  get 'invited/:token', to: 'invited#create', as: 'invited_create'
+  get 'mentors/:token', to: 'mentors#create', as: 'mentors_create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

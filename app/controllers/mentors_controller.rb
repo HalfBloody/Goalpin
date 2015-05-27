@@ -1,11 +1,11 @@
-class InvitedController < ApplicationController
+class MentorsController < ApplicationController
   before_filter :authenticate_user!, except: :create
   def create
-    @invite = Invite.find_by(params[:token])
-    @challenger = @invite.chellenge.user
-    if @invite?
+    @invite = Invite.find_by(token: params[:token])
+    @challenger = @invite.challenge.user
+    if @invite
       @user = User.create(email: @invite.email)
-      @invite.update_column(user_id: @user.id)
+      @invite.update_attributes(invited_id: @user.id)
       flash[:message] = "Thank you for helping your friend with the challenge."
       redirect_to :show
     else

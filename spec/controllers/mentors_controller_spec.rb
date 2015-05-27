@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe InvitedController, type: :controller do
+RSpec.describe MentorsController, type: :controller do
 
   describe "GET #create" do
     it "returns http success" do
