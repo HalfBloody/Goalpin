@@ -1,0 +1,16 @@
+
+<h2>
+  Challenge settings:
+</h2>
+
+<div class="switch">
+  <% if challenge.challenge_setting.daily_email %>
+    <%= check_box_tag 'daily_email', checked: true %>
+  <% else %>
+    <%= check_box_tag 'daily_email' %>
+  <% end %>
+</div>
+<div class="switch">
+  <input id="weekly_email" type="checkbox"></input>
+  <label for="daily_email">Daily email:</label>
+</div>

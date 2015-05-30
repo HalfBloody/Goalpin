@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527192403) do
+ActiveRecord::Schema.define(version: 20150530154736) do
+
+  create_table "challenge_settings", force: true do |t|
+    t.integer  "challenge_id"
+    t.boolean  "daily_email"
+    t.boolean  "weekly_email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "challenge_settings", ["challenge_id"], name: "index_challenge_settings_on_challenge_id"
 
   create_table "challenges", force: true do |t|
     t.integer  "user_id"
