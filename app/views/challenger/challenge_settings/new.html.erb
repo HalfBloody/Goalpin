@@ -1,0 +1,8 @@
+<h1> Set your settings</h1>
+<%= simple_form_for [:challenger, @challenge, @challenge_setting] do |f| %>
+  
+  <%= f.input :daily_email %>
+  <%= f.input :weekly_email %>
+  <%= f.input :challenge_id, as: :hidden %>
+  <%= f.button :submit %>
+<% end %>

@@ -19,7 +19,7 @@ class Challenger::ChallengesController < ApplicationController
     if @challenge
       puts params.to_json
       flash[:notice] = "Challenge created"
-      redirect_to new_challenger_challenge_invite_path(@challenge)
+      redirect_to new_challenger_challenge_challenge_setting_path(@challenge)
     else
       flash[:notice] = "Challenge couldn't be created"
       redirect_to :back

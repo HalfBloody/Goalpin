@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   namespace :challenger do
     resources :challenges, only: [ :index, :show, :new, :create ] do
+      resources :challenge_settings, only: [ :new, :create ]
       resources :invites, only: [ :new, :create ]
     end
   end

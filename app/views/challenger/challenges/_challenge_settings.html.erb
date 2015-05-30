@@ -5,12 +5,22 @@
 
 <div class="switch">
   <% if challenge.challenge_setting.daily_email %>
-    <%= check_box_tag 'daily_email', checked: true %>
+    <input id="daily_email" type="checkbox" checked></input>
+    <label for="daily_email">Daily email:</label>
   <% else %>
-    <%= check_box_tag 'daily_email' %>
+    <input id="daily_email" type="checkbox"></input>
+    <label for="daily_email">Daily email:</label>
   <% end %>
 </div>
 <div class="switch">
-  <input id="weekly_email" type="checkbox"></input>
-  <label for="daily_email">Daily email:</label>
+  <% if challenge.challenge_setting.weekly_email %>
+      <input id="weekly_email" type="checkbox" checked></input>
+    <label for="weekly_email">Weekly email:</label>
+  <% else %>
+      <input id="weekly_email" type="checkbox" ></input>
+    <label for="weekly_email">Weekly email:</label>
+  <% end %>
 </div>
+
+
+
