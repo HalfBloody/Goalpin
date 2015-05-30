@@ -38,7 +38,7 @@
       </div>
     <div class="hidden submit_box">
       <h4>Alright, let's get on with this challenge :)</h4>
-      <%= simple_form_for @challenge do |f| %>
+      <%= simple_form_for [:challenger, @challenge] do |f| %>
         <%= f.input :start_date, as: :hidden %>
         <%= f.input :end_date, as: :hidden,  input_html: { value: Time.now + @days.first.days } %>
         <%= f.input :typus, as: :hidden,  input_html: { value: @typus } %>

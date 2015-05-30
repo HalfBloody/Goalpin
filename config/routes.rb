@@ -1,32 +1,18 @@
 Rails.application.routes.draw do
 
 
-  
-
-  
-  
-
-  namespace :mentors do
-  get 'challenges/index'
-  end
-
-  namespace :mentors do
-  get 'challenges/show'
-  end
-
-  root 'challenges#index'
+  root 'challenger/challenges#index'
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 
-
-  resources :challenges, only: [ :index, :show, :new, :create ] do
-    resources :invites, only: [ :new, :create ]
+  namespace :challenger do
+    resources :challenges, only: [ :index, :show, :new, :create ] do
+      resources :invites, only: [ :new, :create ]
+    end
   end
 
-  get 'mentors/:token', to: 'mentors#create', as: 'mentors_create'
 
-  resources :mentors
-
-  namespace :mentors do
+  get 'mentor/invite/:token', to: 'mentor/users#create', as: 'mentor_create'
+  namespace :mentor do
     resources :challenges, only: [:index, :show]
   end
   # The priority is based upon order of creation: first created -> highest priority.

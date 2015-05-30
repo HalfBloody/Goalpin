@@ -1,0 +1,94 @@
+
+<% if @challenge.behind_schedule? %>
+  <div class="row header">
+    <div class="small-9 column">
+      <h1>
+        <%= "Hurry up!" %>
+      </h1>
+    </div>
+  </div>
+  <div class="row header">
+    <div class="small-9 column">
+      <h2>
+        <%= "Your #{@challenge.typus} challenge is behind schedule" %>
+      </h2>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="small-9 column">
+      <%= "#{@challenge.time_progress.round.to_s}% of your time has passed but you only finished #{@challenge.milestone_progress.to_i}% of your milestones." %>
+    </div>
+  </div>
+<% else %>
+  <div class="row header">
+    <div class="small-9 column">
+      <h1>
+        <%= "Keep up the good work!" %>
+      </h1>
+    </div>
+  </div>
+  <div class="row header">
+    <div class="small-9 column">
+      <h2>
+        <%= "Your #{@challenge.typus} challenge is on schedule." %>
+      </h2>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="small-9 column">
+      <%= "#{@challenge.time_progress.round.to_s}% of your time has passed and you already finished #{@challenge.milestone_progress.to_i}% of your milestones." %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="small-9 column">
+    You started your challenge on: 
+    <%= @challenge.start_date.strftime("%e. %B %Y") %>
+  </div>
+</div>
+<div class="row">
+  <div class="small-9 column">
+    Your challenge ends on: 
+    <%= @challenge.end_date.strftime("%e. %B %Y") %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-9 column">
+    You completed: 
+    <%= "#{@challenge.finished_milestones} out of #{@challenge.number_of_milestones} milestones" %>
+  </div>
+</div>
+
+<div class="row errors">
+  <div class="small-9 column">
+    <%= render partial: "error", locals: { object: @invite } %>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="small-9 column">
+    <h2>Invite your friends as mentors</h2>
+  </div>
+</div>
+<div class="row invite-form">
+  <div class="small-9 column">
+    <%= simple_form_for [:challenger, @challenge, @invite], 
+        remote: true do |f| %>
+      <%= f.input :email %>
+      <%= f.input :challenge_id, as: :hidden, input_html: { value: @challenge.id } %>
+          <%= f.button :submit %>
+    <% end %>
+  </div>    
+</div>
+
+<div class="row mentor-list">
+  <div class="small-9 column">
+    <h3>Friends you invited as mentors</h3>
+  </div>
+</div>
+<div class="row" id="invites">
+    <%= render(@invites) %>
+</div>

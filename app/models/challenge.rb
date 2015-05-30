@@ -17,10 +17,25 @@
 class Challenge < ActiveRecord::Base
   belongs_to :user
   has_many :invites
+  has_many :mentors, through: :invites
+
+  before_create :reset_milestones
 
 
   def time_progress
-    [[(days_since_start.to_f / total_days.to_f), 1].min, 0].max
+    ([[(days_since_start.to_f / total_days.to_f), 1].min, 0].max * 100)
+  end
+
+  def milestone_progress
+    ([[(finished_milestones.to_f / number_of_milestones.to_f), 1].min, 0].max * 100)
+  end
+
+  def behind_schedule?
+    self.time_progress > milestone_progress
+  end
+
+  def reset_milestones
+    self.finished_milestones = 0
   end
 
   private

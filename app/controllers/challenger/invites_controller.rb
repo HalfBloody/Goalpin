@@ -1,10 +1,11 @@
-class InvitesController < ApplicationController
+class Challenger::InvitesController < ApplicationController
   before_filter :authenticate_user!
 
   def new
     @invite = Invite.new
-    @invites = Challenge.find(params[:challenge_id]).invites.order(created_at: :desc)
     @challenge = Challenge.find(params[:challenge_id])
+    @invites = @challenge.invites.order(created_at: :desc)
+
   end
 
   def create
@@ -19,6 +20,6 @@ class InvitesController < ApplicationController
   private
 
   def invite_params
-    params.require(:invite).permit(:challenge_id, :email, :invited_id)
+    params.require(:invite).permit(:challenge_id, :email, :mentor_id)
   end
 end

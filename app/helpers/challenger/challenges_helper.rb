@@ -1,4 +1,4 @@
-module ChallengesHelper
+module Challenger::ChallengesHelper
 
   def add_days(time, day_num)
     time + day_num.days

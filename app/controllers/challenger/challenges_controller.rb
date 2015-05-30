@@ -1,4 +1,4 @@
-class ChallengesController < ApplicationController
+class Challenger::ChallengesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
@@ -19,7 +19,7 @@ class ChallengesController < ApplicationController
     if @challenge
       puts params.to_json
       flash[:notice] = "Challenge created"
-      redirect_to new_challenge_invite_path(@challenge)
+      redirect_to new_challenger_challenge_invite_path(@challenge)
     else
       flash[:notice] = "Challenge couldn't be created"
       redirect_to :back
@@ -27,6 +27,10 @@ class ChallengesController < ApplicationController
   end
 
   def show
+    @invite = Invite.new
+    @challenge = Challenge.find(params[:id])
+    @invites = @challenge.invites.order(created_at: :desc)
+    
   end
 
   private
