@@ -1,0 +1,62 @@
+
+<% if challenge.behind_schedule? %>
+  <div class="row header">
+    <div class="small-9 column">
+      <h1>
+        <%= "Hurry up!" %>
+      </h1>
+    </div>
+  </div>
+  <div class="row header">
+    <div class="small-9 column">
+      <h2>
+        <%= "Your #{challenge.typus} challenge is behind schedule" %>
+      </h2>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="small-9 column">
+      <%= "#{challenge.time_progress.round.to_s}% of your time has passed but you only finished #{challenge.milestone_progress.to_i}% of your milestones." %>
+    </div>
+  </div>
+<% else %>
+  <div class="row header">
+    <div class="small-9 column">
+      <h1>
+        <%= "Keep up the good work!" %>
+      </h1>
+    </div>
+  </div>
+  <div class="row header">
+    <div class="small-9 column">
+      <h2>
+        <%= "Your #{challenge.typus} challenge is on schedule." %>
+      </h2>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="small-9 column">
+      <%= "#{challenge.time_progress.round.to_s}% of your time has passed and you already finished #{challenge.milestone_progress.to_i}% of your milestones." %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="small-9 column">
+    You started your challenge on: 
+    <%= challenge.start_date.strftime("%e. %B %Y") %>
+  </div>
+</div>
+<div class="row">
+  <div class="small-9 column">
+    Your challenge ends on: 
+    <%= challenge.end_date.strftime("%e. %B %Y") %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-9 column">
+    You completed: 
+    <%= "#{@challenge.finished_milestones} out of #{@challenge.number_of_milestones} milestones" %>
+  </div>
+</div>
