@@ -6,7 +6,9 @@
 
 <div class="row">
   <div class="small-10 column">
-    <%= render partial: "challenge_details", locals: { challenge: @challenge } %>
+    <div id="challenge_details">
+      <%= render partial: "challenge_details", locals: { challenge: @challenge } %>
+    </div>
   </div>
   <div class="small-2 column">
     <%= render partial: "challenge_settings", locals: { challenge: @challenge, challenge_setting: @challenge_setting } %>

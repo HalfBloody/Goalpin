@@ -21,6 +21,8 @@ class Challenge < ActiveRecord::Base
   has_one :challenge_setting
   has_many :milestones
 
+  accepts_nested_attributes_for :milestones
+
   before_create :reset_milestones
 
 
@@ -41,11 +43,22 @@ class Challenge < ActiveRecord::Base
   end
 
   def complete_milestone
-    if Milestone.complete(self.id) && (self.finished_milestones < self.number_of_milestones)
-      self.finished_milestones += 1
-    else
-      self.errors.add(self, "not able to add milestone")
+    if (self.finished_milestones < self.number_of_milestones)
+      Milestone.complete(self.id)
+      self.increment!(:finished_milestones)
     end
+  end
+
+  def finished?
+    self.milestones.size >= self.number_of_milestones
+  end
+
+  def last_milestone
+    self.milestones.order(completed_at: desc).first
+  end
+
+  def time_finished_before_end
+    self.end_date self.last.milestone.completed_at
   end
 
   private

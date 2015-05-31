@@ -1,12 +1,17 @@
 <div class="row">
-  <div class="small-3 column">
-    <%= link_to "complete now?", front_challenge_milestone_path(challenge), remote: true, method: "post" %>
-  </div>
-  <div class="small-9 column">
-    <% if milestone.completed_at.nil? %>
+  <% if milestone.completed_at.nil? %>
+    <div class="small-3 column">
+      <%= link_to "complete now?", front_challenge_milestones_path(challenge), remote: true, method: "post" %>
+    </div>
+    <div class="small-9 column">
+      
       <%= "Milestonen No. #{milestone_counter} still has to be finished" %>
-    <% else %>
-      <%= "Milestonen No. #{milestone_counter} was finished on: " + milestone.completed_at.strftime("%e. %B %Y") %>
-    <% end %>
-  </div>
+    </div>
+  <% else %>
+      <div class="small-3 column">
+      </div>
+      <div class="small-9 column">
+        <%= "Milestonen No. #{milestone_counter} was finished on: " + milestone.completed_at.strftime("%e. %B %Y") %>
+      </div>
+  <% end %>
 </div>

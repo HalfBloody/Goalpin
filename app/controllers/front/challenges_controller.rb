@@ -17,7 +17,6 @@ class Front::ChallengesController < ApplicationController
   def create
     @challenge = Challenge.create(challenge_params)
     if @challenge
-      puts params.to_json
       flash[:notice] = "Challenge created"
       redirect_to new_front_challenge_challenge_setting_path(@challenge)
     else
@@ -37,10 +36,6 @@ class Front::ChallengesController < ApplicationController
     @number_of_unfinished_milestones.times do |um|
       @unfinished_milestones << Milestone.new(challenge_id: @challenge.id)
     end
-    puts "here"
-    puts @challenge.number_of_milestones
-    puts @challenge.finished_milestones
-    puts @number_of_unfinished_milestones
     @milestones = @finished_milestones + @unfinished_milestones
     
   end

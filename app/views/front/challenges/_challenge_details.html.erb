@@ -19,6 +19,29 @@
       <%= "#{challenge.time_progress.round.to_s}% of your time has passed but you only finished #{challenge.milestone_progress.to_i}% of your milestones." %>
     </div>
   </div>
+<% elsif challenge.finished? %>
+
+<div class="row header">
+    <div class="small-12 column">
+      <h1>
+        <%= "Congratulations!" %>
+      </h1>
+    </div>
+  </div>
+  <div class="row header">
+    <div class="small-12 column">
+      <h2>
+        <%= "You finished your #{challenge.typus} challenge. I'm proud of you." %>
+      </h2>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="small-12 column">
+      <%= "#{challenge.time_progress.round.to_s}% of your time has passed but you only finished #{challenge.milestone_progress.to_i}% of your milestones." %>
+    </div>
+  </div>
+
+
 <% else %>
   <div class="row header">
     <div class="small-12 column">
