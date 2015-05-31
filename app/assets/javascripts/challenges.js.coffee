@@ -29,4 +29,10 @@ $(document).on "page:change", ->
     $(this).addClass("active")
     $(".submit_box").fadeIn(600);
     
-    
+  $("#show_milestones").click ->
+    if ($("#milestones").hasClass("hidden"))
+      $("#milestones").removeClass("hidden")  
+      $("#show_milestones").text("Hide milestones");
+    else
+      $("#milestones").addClass("hidden")  
+      $("#show_milestones").text("All milestones");

@@ -13,7 +13,20 @@
   </div>
 </div>
 
-<%= render @milestones %>
+<div id="milestones" class="hidden">
+  <% if @milestones.size == 0 %>
+    <div class="row">
+      <div class="small-9 column">
+        <p>
+          No milestones finished yet. ;(
+        </p>
+      </div>
+    </div>
+  <% else %>
+    <%= render @milestones %>
+  <% end %>
+</div>
+
 
 
 
