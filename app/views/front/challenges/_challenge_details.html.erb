@@ -42,21 +42,25 @@
 <% end %>
 
 <div class="row">
-  <div class="small-12 column">
+  <div class="small-6 column">
     You started your challenge on: 
     <%= challenge.start_date.strftime("%e. %B %Y") %>
   </div>
 </div>
 <div class="row">
-  <div class="small-12 column">
+  <div class="small-6 column">
     Your challenge ends on: 
     <%= challenge.end_date.strftime("%e. %B %Y") %>
   </div>
 </div>
 
 <div class="row">
-  <div class="small-12 column">
+  <div class="small-6 column">
     You completed: 
     <%= "#{@challenge.finished_milestones} out of #{@challenge.number_of_milestones} milestones" %>
   </div>
+  <div class="small-6 column">
+    <%= link_to "All milestones", "", html: { class: "hidden" } %>
+    
+  </div>  
 </div>

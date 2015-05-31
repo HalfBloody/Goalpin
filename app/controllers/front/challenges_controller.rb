@@ -31,6 +31,7 @@ class Front::ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
     @invites = @challenge.invites.order(created_at: :desc)
     @challenge_setting = @challenge.challenge_setting
+    @milestones = Milestone.where(challenge_id: params[:id])
     
   end
 
