@@ -2,3 +2,8 @@
 
 $("#milestones").html("<%= escape_javascript(render partial: 'front/milestones/milestone', collection: @milestones, locals: { challenge: @challenge }) %>");
 $("#challenge_details").html("<%= escape_javascript(render partial: 'front/challenges/challenge_details', locals: { challenge: @challenge }) %>");
+
+if ("<%= @challenge.finished? %>") {
+  $("#invite_dialog").addClass("hidden");
+};
+  
