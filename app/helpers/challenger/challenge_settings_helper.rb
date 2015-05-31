@@ -1,2 +1,0 @@
-module Challenger::ChallengeSettingsHelper
-end

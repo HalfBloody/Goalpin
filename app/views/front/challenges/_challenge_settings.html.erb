@@ -3,6 +3,13 @@
   Challenge settings:
 </h2>
 
+<%= simple_form_for [:front, challenge, challenge_setting] do |f| %>
+
+  <%= f.input :daily_email %>
+  <%= f.input :weekly_email %>
+  <%= f.button :submit %>
+<% end %>
+<!-- 
 <div class="switch">
   <% if challenge.challenge_setting.daily_email %>
     <input id="daily_email" type="checkbox" checked></input>
@@ -24,3 +31,4 @@
 
 
 
+ -->

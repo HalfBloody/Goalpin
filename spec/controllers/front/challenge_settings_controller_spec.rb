@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Challenger::ChallengeSettingsController, type: :controller do
+RSpec.describe Front::ChallengeSettingsController, type: :controller do
 
   describe "GET #new" do
     it "returns http success" do

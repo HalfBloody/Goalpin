@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
 
-  root 'challenger/challenges#index'
+  root 'front/challenges#index'
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 
-  namespace :challenger do
+  namespace :front do
     resources :challenges, only: [ :index, :show, :new, :create ] do
-      resources :challenge_settings, only: [ :new, :create ]
+      resources :challenge_settings, only: [ :new, :create, :update ]
       resources :invites, only: [ :new, :create ]
     end
   end

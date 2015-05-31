@@ -1,4 +1,4 @@
-   module Challenger::InvitesHelper
+   module Front::InvitesHelper
 
     def stringify_time_diff(time_hash)
       time_hash.reduce("") do |str, (name, count)|

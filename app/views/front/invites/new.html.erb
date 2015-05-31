@@ -1,32 +1,22 @@
+
+<div class="row header">
+  <div class="small-9 column">
+    <h1>Invite friends to support you</h1>
+  </div>
+  <div class="small-3 column">
+    <%= link_to "Check your challenge progress", front_challenge_path(@challenge) %>
+  </div>
+</div>
+
 <div class="row errors">
   <div class="small-9 column">
     <%= render partial: "error", locals: { object: @invite } %>
   </div>
 </div>
 
-<div class="row">
-  <div class="small-10 column">
-    <%= render partial: "challenge_details", locals: { challenge: @challenge } %>
-  </div>
-</div>
-
-<div class="row">
-  <div class="small-2 column">
-    <%= render partial: "challenge_settings", locals: { challenge: @challenge } %>
-  </div>
-</div>
-
-
-
-
-<div class="row">
-  <div class="small-9 column">
-    <h2>Invite your friends as mentors</h2>
-  </div>
-</div>
 <div class="row invite-form">
   <div class="small-9 column">
-    <%= simple_form_for [:challenger, @challenge, @invite], 
+    <%= simple_form_for [:front, @challenge, @invite], 
         remote: true do |f| %>
       <%= f.input :email %>
       <%= f.input :challenge_id, as: :hidden, input_html: { value: @challenge.id } %>
@@ -34,6 +24,7 @@
     <% end %>
   </div>    
 </div>
+
 
 <div class="row mentor-list">
   <div class="small-9 column">
