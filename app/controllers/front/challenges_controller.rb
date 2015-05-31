@@ -31,7 +31,17 @@ class Front::ChallengesController < ApplicationController
     @challenge = Challenge.find(params[:id])
     @invites = @challenge.invites.order(created_at: :desc)
     @challenge_setting = @challenge.challenge_setting
-    @milestones = Milestone.where(challenge_id: params[:id])
+    @finished_milestones = Milestone.where(challenge_id: params[:id])
+    @number_of_unfinished_milestones = @challenge.number_of_milestones - @challenge.finished_milestones
+    @unfinished_milestones = []
+    @number_of_unfinished_milestones.times do |um|
+      @unfinished_milestones << Milestone.new(challenge_id: @challenge.id)
+    end
+    puts "here"
+    puts @challenge.number_of_milestones
+    puts @challenge.finished_milestones
+    puts @number_of_unfinished_milestones
+    @milestones = @finished_milestones + @unfinished_milestones
     
   end
 

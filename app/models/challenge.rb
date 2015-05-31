@@ -41,7 +41,11 @@ class Challenge < ActiveRecord::Base
   end
 
   def complete_milestone
-    Milestone.complete(self.id)
+    if Milestone.complete(self.id) && (self.finished_milestones < self.number_of_milestones)
+      self.finished_milestones += 1
+    else
+      self.errors.add(self, "not able to add milestone")
+    end
   end
 
   private
