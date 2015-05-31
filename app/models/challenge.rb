@@ -54,7 +54,13 @@ class Challenge < ActiveRecord::Base
   end
 
   def last_milestone
-    self.milestones.order(completed_at: desc).first
+    self.milestones.order(completed_at: :desc).first
+  end
+
+  def finished_at
+    if finished?
+      last_milestone.completed_at
+    end
   end
 
   def time_finished_before_end

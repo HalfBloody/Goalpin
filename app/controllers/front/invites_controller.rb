@@ -3,7 +3,7 @@ require "time_utils.rb"
 class Front::InvitesController < ApplicationController
   include TimeUtils
   before_filter :authenticate_user!
-  helper_method :time_diff_string
+
 
 
   def new
