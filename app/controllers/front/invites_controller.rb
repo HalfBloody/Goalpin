@@ -1,11 +1,17 @@
+require "time_utils.rb"
+
 class Front::InvitesController < ApplicationController
+  include TimeUtils
   before_filter :authenticate_user!
+  helper_method :time_diff_string
+
 
   def new
     @invite = Invite.new
     @challenge = Challenge.find(params[:challenge_id])
     @invites = @challenge.invites.order(created_at: :desc)
-
+    puts "bla"
+    puts time_diff_string(@challenge.created_at, Time.now)
   end
 
   def create

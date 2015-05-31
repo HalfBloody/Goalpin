@@ -1,9 +1,8 @@
 
 <div class="row invite-box">
   <div class="small-6 columns">
-    You invited <%= link_to invite.email, "#" %> <%= 
-    stringify_time_diff(TimeDifference.between(invite.
-    created_at, Time.now).in_general) %> ago.
+    You invited <%= link_to invite.email, "#" %> <%= time_diff_string(invite.created_at, Time.now)
+     %> ago.
   </div>
   <div class="small-6 columns label-box">
     <% if invite.mentor_id.nil? %>
@@ -17,3 +16,8 @@
     <% end %>
   </div>  
 </div>
+
+<!--   -->
+
+<!-- stringify_time_diff(TimeDifference.between(invite.
+    created_at, Time.now).in_general) -->
