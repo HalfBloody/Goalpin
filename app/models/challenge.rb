@@ -19,6 +19,7 @@ class Challenge < ActiveRecord::Base
   has_many :invites
   has_many :mentors, through: :invites
   has_one :challenge_setting
+  has_many :milestones
 
   before_create :reset_milestones
 
@@ -37,6 +38,10 @@ class Challenge < ActiveRecord::Base
 
   def reset_milestones
     self.finished_milestones = 0
+  end
+
+  def complete_milestone
+    Milestone.complete(self.id)
   end
 
   private
