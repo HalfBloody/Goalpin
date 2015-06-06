@@ -1,4 +1,4 @@
-require 'time_utils.rb'
+require 'time_utils'
 
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.

@@ -1,4 +1,4 @@
-module TimeUtils
+  module TimeUtils
 
   def time_diff_string(start_time, end_time, options = {} )
     max_parts = 3 # opt[:max_parts]

@@ -28,9 +28,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  has_many :challenges, as: :challenger
-  has_many :challenges, as: :mentor, through: :invites
-  has_many :invites
+  has_many :challenges  
+  has_many :challenges, through: :invites
+  has_many :invites, class_name: "User", foreign_key: "mentor_id"
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
