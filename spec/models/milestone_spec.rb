@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: milestones
+#
+#  id           :integer          not null, primary key
+#  challenge_id :integer
+#  completed_at :datetime
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 require 'rails_helper'
 
 RSpec.describe Milestone, type: :model do

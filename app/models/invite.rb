@@ -2,17 +2,19 @@
 #
 # Table name: invites
 #
-#  id           :integer          not null, primary key
-#  mentor_id    :integer
-#  created_at   :datetime
-#  updated_at   :datetime
-#  email        :string(255)
-#  challenge_id :integer
-#  token        :string(255)
+#  id            :integer          not null, primary key
+#  mentor_id     :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  email         :string(255)
+#  challenge_id  :integer
+#  token         :string(255)
+#  challenger_id :integer
 #
 
 class Invite < ActiveRecord::Base
   belongs_to :challenge
+  belongs_to :challenger, class_name: "User"
   belongs_to :mentor, class_name: "User"
 
   # validates :email, uniqueness: true, on: :create
