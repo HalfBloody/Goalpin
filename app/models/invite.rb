@@ -14,7 +14,7 @@
 
 class Invite < ActiveRecord::Base
   belongs_to :challenge
-  belongs_to :challenger, class_name: "User"
+  belongs_to :inviter, class_name: "User"
   belongs_to :mentor, class_name: "User"
 
   # validates :email, uniqueness: true, on: :create

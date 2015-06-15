@@ -15,9 +15,12 @@
 #
 
 class Challenge < ActiveRecord::Base
-  belongs_to :user
+  
+
+  belongs_to :challenger, class_name: "User"
   has_many :invites
-  has_many :mentors, through: :invites
+  has_many :mentors, through: :mentor_invites
+  
   has_one :challenge_setting
   has_many :milestones
 
