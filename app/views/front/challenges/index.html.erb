@@ -1,8 +1,15 @@
 <div class="background_color">
   <div class="second_layer">
     <h1>Updates from your mentees</h1>
-    <% if @challenge_activities %>
-      <!-- Enter activity here -->
+    <% if @mentored_challenges %>
+      <% @mentored_challenges.each do |challenge| %>
+        <%= "#{challenge.challenger.email}'s challenge is " %>
+        <%= link_to challenge.status, front_challenge_path(challenge) %>
+        <%= "It started #{time_diff_string(challenge.start_date.utc, Time.now.utc)} ago" %>
+        <%= Time.now %><br>
+        <%= challenge.start_date %>
+      <% end %>
+
     <% end %>
   </div>
   <div class="second_layer">

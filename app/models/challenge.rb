@@ -17,9 +17,8 @@
 class Challenge < ActiveRecord::Base
   
 
-  belongs_to :challenger, class_name: "User"
+  belongs_to :challenger, class_name: "User", foreign_key: "user_id"
   has_many :invites
-  has_many :mentor_invites, class_name: "Invite", foreign_key: "mentor_id"
   has_many :mentors, through: :mentor_invites
   
   has_one :challenge_setting
@@ -29,10 +28,6 @@ class Challenge < ActiveRecord::Base
 
   before_create :reset_milestones
 
-
-  def self.mentored_challenges(user)
-    Challenge.joins(:mentor_invites).where(mentor_id: user.id)
-  end
 
   def time_progress
     ([[(days_since_start.to_f / total_days.to_f), 1].min, 0].max * 100)
@@ -61,6 +56,10 @@ class Challenge < ActiveRecord::Base
     self.milestones.size >= self.number_of_milestones
   end
 
+  def not_started?
+    self.milestones.size == 0
+  end
+
   def last_milestone
     self.milestones.order(completed_at: :desc).first
   end
@@ -73,6 +72,24 @@ class Challenge < ActiveRecord::Base
 
   def time_finished_before_end
     self.end_date self.last.milestone.completed_at
+  end
+
+  def last_milestone
+    self.milestones.last
+  end
+
+  def status
+    # status of a particular challenge
+    case true
+    when self.finished?
+      "finished"
+    when self.not_started?
+      "not started"
+    when self.behind_schedule?
+      "behind schedule"
+    else
+      "on track"
+    end
   end
 
   private

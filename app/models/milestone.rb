@@ -21,9 +21,5 @@ class Milestone < ActiveRecord::Base
     end
   end
 
-  def self.last_mentored_activities(user)
-    @mentored_challenges = Challenge.mentored_challenges
-    @last_milestones = @mentored_challenges.map { |challenge| challenge.milestones.last }
-  end
 
 end

@@ -45,7 +45,10 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
       user.token = auth.credentials.token
       user.secret = auth.credentials.secret
-
     end
+  end
+
+  def mentored_challenges
+    Challenge.joins(:invites).where( invites: { mentor_id: self.id } )
   end
 end

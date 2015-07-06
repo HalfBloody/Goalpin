@@ -4,7 +4,7 @@ class Front::ChallengesController < ApplicationController
   def index
     @typus = ["running", "food"]
     @challenges = Challenge.where(user_id: current_user.id)
-    @challenge_activities = Milestone.last_mentored_activities(current_user)
+    @mentored_challenges = current_user.mentored_challenges
   end
 
   def new
