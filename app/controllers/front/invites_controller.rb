@@ -10,12 +10,10 @@ class Front::InvitesController < ApplicationController
     @invite = Invite.new
     @challenge = Challenge.find(params[:challenge_id])
     @invites = @challenge.invites.order(created_at: :desc)
-    puts "bla"
-    puts time_diff_string(@challenge.created_at, Time.now)
   end
 
   def create
-    @invite = Invite.new(invite_params)    
+    @invite = Invite.new(invite_params)
     if @invite.save
       InviteMailer.invite_email(@invite).deliver
     end
@@ -26,6 +24,6 @@ class Front::InvitesController < ApplicationController
   private
 
   def invite_params
-    params.require(:invite).permit(:challenge_id, :email, :mentor_id)
+    params.require(:invite).permit(:challenge_id, :email, :mentor_id, :inviter_id)
   end
 end

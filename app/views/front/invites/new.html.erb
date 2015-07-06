@@ -20,7 +20,8 @@
         remote: true do |f| %>
       <%= f.input :email %>
       <%= f.input :challenge_id, as: :hidden, input_html: { value: @challenge.id } %>
-          <%= f.button :submit %>
+      <%= f.input :inviter_id, as: :hidden, input_html: { value: @challenge.user_id } %>
+      <%= f.button :submit %>
     <% end %>
   </div>    
 </div>

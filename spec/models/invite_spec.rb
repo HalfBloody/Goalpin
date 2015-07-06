@@ -2,14 +2,14 @@
 #
 # Table name: invites
 #
-#  id            :integer          not null, primary key
-#  mentor_id     :integer
-#  created_at    :datetime
-#  updated_at    :datetime
-#  email         :string(255)
-#  challenge_id  :integer
-#  token         :string(255)
-#  challenger_id :integer
+#  id           :integer          not null, primary key
+#  mentor_id    :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#  email        :string(255)
+#  challenge_id :integer
+#  token        :string(255)
+#  inviter_id   :integer
 #
 
 require 'rails_helper'

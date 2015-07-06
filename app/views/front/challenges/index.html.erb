@@ -1,26 +1,34 @@
-Check your current challenges
-<% if @challenges %>
-  <% @challenges.each do |challenge| %>
-<div class="row">
-    <div class="small-3 column">
-      <%= link_to challenge.typus, front_challenge_path(challenge) %>
+<div class="background_color">
+  <div class="second_layer">
+    <h1>Updates from your mentees</h1>
+    <% if @challenge_activities %>
+      <!-- Enter activity here -->
+    <% end %>
+  </div>
+  <div class="second_layer">
+    <h1>Check your current challenges</h1>
+    <% if @challenges %>
+      <% @challenges.each do |challenge| %>
+    <div class="row">
+        <div class="small-3 column">
+          <%= link_to "Your #{challenge.typus} Challenge", front_challenge_path(challenge) %>
+        </div>
+        <div class="small-3 column">
+          <%= challenge.start_date.strftime("%e. %B %Y") %>
+        </div>
+        <div class="small-3 column">
+          <%= challenge.end_date.strftime("%e. %B %Y") %>
+        </div>
+        <div class="small-3 column">
+          <%= (challenge.time_progress).round.to_s + "% of the challenge is over!" %>
+        </div>
     </div>
-    <div class="small-3 column">
-      <%= challenge.start_date.strftime("%e. %B %Y") %>
+      <% end %>
+    <% else %>
+    <div>
+      Start a new challenge! %>
     </div>
-    <div class="small-3 column">
-      <%= challenge.end_date.strftime("%e. %B %Y") %>
-    </div>
-    <div class="small-3 column">
-      <%= (challenge.time_progress).round.to_s + "% of the challenge is over!" %>
-    </div>
+    <% end %>
+    <%= link_to "Add a new challenge", new_front_challenge_path %>
+  </div>
 </div>
-  <% end %>
-<% else %>
-<div>
-  Start a new challenge! %>
-</div>
-<% end %>
-<%= link_to "Add a new challenge", new_front_challenge_path %>
-
-<%= debug current_user %>

@@ -1,2 +1,0 @@
-module Mentor::UsersHelper
-end

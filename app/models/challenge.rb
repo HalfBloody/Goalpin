@@ -19,6 +19,7 @@ class Challenge < ActiveRecord::Base
 
   belongs_to :challenger, class_name: "User"
   has_many :invites
+  has_many :mentor_invites, class_name: "Invite", foreign_key: "mentor_id"
   has_many :mentors, through: :mentor_invites
   
   has_one :challenge_setting
@@ -28,6 +29,10 @@ class Challenge < ActiveRecord::Base
 
   before_create :reset_milestones
 
+
+  def self.mentored_challenges(user)
+    Challenge.joins(:mentor_invites).where(mentor_id: user.id)
+  end
 
   def time_progress
     ([[(days_since_start.to_f / total_days.to_f), 1].min, 0].max * 100)

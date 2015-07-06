@@ -1,10 +1,10 @@
 class Front::ChallengesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :update_invite
 
   def index
     @typus = ["running", "food"]
     @challenges = Challenge.where(user_id: current_user.id)
-    
+    @challenge_activities = Milestone.last_mentored_activities(current_user)
   end
 
   def new
@@ -41,6 +41,14 @@ class Front::ChallengesController < ApplicationController
   end
 
   private
+
+  def update_invite
+    if session[:invite_token]
+      @invite = Invite.find_by(token: session[:invite_token])
+      @invite.update_attributes(mentor_id: current_user.id)
+      session[:invite_token] = nil
+    end
+  end
 
   def challenge_params
     params.require(:challenge).permit(:start_date, :end_date, :typus, :number_of_milestones).merge(user_id: current_user.id)
