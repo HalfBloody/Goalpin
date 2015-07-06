@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Can you help <%= @invite.challenge.user.email %> to finish his challenge on shameorfame?</h1>
+    <h1>Can you help <%= @invite.inviter.email %> to finish his challenge on shameorfame?</h1>
 
     For that please go to <%= link_to 'your friends challenge', mentor_create_url(@invite.token) %>
 
