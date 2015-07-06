@@ -13,10 +13,8 @@ Rails.application.routes.draw do
   end
 
 
-  get 'mentor/invite/:token', to: 'mentor/users#create', as: 'mentor_create'
-  namespace :mentor do
-    resources :challenges, only: [:index, :show]
-  end
+  get 'front/mentor/:token', to: 'front/mentors#create', as: 'mentor_create'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
