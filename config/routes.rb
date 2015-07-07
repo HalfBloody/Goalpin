@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :challenge_settings, only: [ :new, :create, :update ]
       resources :invites, only: [ :new, :create ]
     end
+    resources :mentor_challenges, only: [ :show ]
   end
 
 

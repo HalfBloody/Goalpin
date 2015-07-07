@@ -25,7 +25,7 @@
       </div>
     </div>
   <% else %>
-    <%= render partial: "front/milestones/milestone", collection: @milestones, locals: { challenge: @challenge } %>
+    <%= render partial: "front/milestones/milestone", collection: @milestones, locals: { challenge: @challenge, is_owner: @is_owner, is_mentor: @is_mentor } %>
   <% end %>
 </div>
 
