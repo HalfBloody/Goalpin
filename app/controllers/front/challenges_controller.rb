@@ -26,18 +26,36 @@ class Front::ChallengesController < ApplicationController
   end
 
   def show
-    @invite = Invite.new
     @challenge = Challenge.find(params[:id])
-    @invites = @challenge.invites.order(created_at: :desc)
-    @challenge_setting = @challenge.challenge_setting
-    @finished_milestones = Milestone.where(challenge_id: params[:id])
-    @number_of_unfinished_milestones = @challenge.number_of_milestones - @challenge.finished_milestones
-    @unfinished_milestones = []
-    @number_of_unfinished_milestones.times do |um|
-      @unfinished_milestones << Milestone.new(challenge_id: @challenge.id)
+    @is_owner = @challenge.owner?(current_user)
+    @is_mentor = @challenge.mentor?(current_user)
+    if @is_owner || @is_mentor
+      @invite = Invite.new
+      @invites = @challenge.invites.order(created_at: :desc)
+      @challenge_setting = @challenge.challenge_setting
+      @finished_milestones = Milestone.where(challenge_id: params[:id])
+      @number_of_unfinished_milestones = @challenge.number_of_milestones - @challenge.finished_milestones
+      @unfinished_milestones = []
+      @number_of_unfinished_milestones.times do |um|
+        @unfinished_milestones << Milestone.new(challenge_id: @challenge.id)
+      end
+      @milestones = @finished_milestones + @unfinished_milestones
+    else
+      raise ActionController::RoutingError.new('not found')
     end
-    @milestones = @finished_milestones + @unfinished_milestones
-    
+
+  end
+
+  def edit
+    @challenge = Challenge.find(params[:id])
+    if !@challenge.owner? (current_user)
+      raise ActionController::RoutingError.new('not found')
+    end
+
+    # can edit
+
+
+
   end
 
   private

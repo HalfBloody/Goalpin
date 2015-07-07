@@ -3,11 +3,18 @@
     <h1>Updates from your mentees</h1>
     <% if @mentored_challenges %>
       <% @mentored_challenges.each do |challenge| %>
-        <%= "#{challenge.challenger.email}'s challenge is " %>
-        <%= link_to challenge.status, front_challenge_path(challenge) %>
-        <%= "It started #{time_diff_string(challenge.start_date.utc, Time.now.utc)} ago" %>
-        <%= Time.now %><br>
-        <%= challenge.start_date %>
+        <div class= "row">
+          <div class="column large-12">
+            <%= "#{challenge.challenger.email} has completed his last milestone " %>
+            <%= "#{time_diff_string(challenge.last_milestone.completed_at.utc, Time.now.utc)} ago. The challenge is #{challenge.status}." %>
+          </div>
+          <div class="row">
+            <div class="column large-6">
+              <%= link_to "Send a quick message of encouragement", front_challenge_path(challenge), class: "button" %>
+            </div>
+          </div>
+        </div>
+        
       <% end %>
 
     <% end %>
