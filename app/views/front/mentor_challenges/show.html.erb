@@ -28,3 +28,14 @@
     <%= render partial: "front/milestones/milestone", collection: @milestones, locals: { challenge: @challenge, is_owner: @is_owner, is_mentor: @is_mentor } %>
   <% end %>
 </div>
+
+<div id="message_dialog">
+  <%= simple_form_for [:front, @message] do |f| %>
+    <%= f.input :subject %>
+    <%= f.input :text, as: :text %>
+    <%= f.input :challenge_id, as: :hidden, input_html: { value: @challenge.id } %>
+    <%= f.input :recepient_id, as: :hidden, input_html: { value: @challenge.user_id } %>
+    <%= f.input :sender_id, as: :hidden, input_html: { value: current_user.id } %>
+    <%= f.button :submit %>
+  <% end %>
+</div>

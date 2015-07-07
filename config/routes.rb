@@ -11,6 +11,7 @@ Rails.application.routes.draw do
       resources :invites, only: [ :new, :create ]
     end
     resources :mentor_challenges, only: [ :show ]
+    resources :messages, only: [ :create ]
   end
 
 

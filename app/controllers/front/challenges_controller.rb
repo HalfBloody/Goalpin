@@ -43,20 +43,8 @@ class Front::ChallengesController < ApplicationController
     else
       raise ActionController::RoutingError.new('not found')
     end
-
   end
 
-  def edit
-    @challenge = Challenge.find(params[:id])
-    if !@challenge.owner? (current_user)
-      raise ActionController::RoutingError.new('not found')
-    end
-
-    # can edit
-
-
-
-  end
 
   private
 
