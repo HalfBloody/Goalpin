@@ -37,6 +37,11 @@ class User < ActiveRecord::Base
   has_many :challenges, through: :invites
   has_many :mentor_challenges, through: :mentor_invites
 
+  has_many :recieved_messages, class_name: "Message", foreign_key: "recipient_id"
+  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
+
+  #  I have to add here: has_many message_recievers UND has_many message_senders, through: ...
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
