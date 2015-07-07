@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615125420) do
+ActiveRecord::Schema.define(version: 20150707164650) do
 
   create_table "challenge_settings", force: true do |t|
     t.integer  "challenge_id"
@@ -45,6 +45,15 @@ ActiveRecord::Schema.define(version: 20150615125420) do
     t.integer  "challenge_id"
     t.string   "token"
     t.integer  "inviter_id"
+  end
+
+  create_table "messages", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "recepient_id"
+    t.string   "subject"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "milestones", force: true do |t|
