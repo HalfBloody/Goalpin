@@ -28,7 +28,10 @@
 
   def cut(string, max_parts)
     split_string = string.split(" ")
-    max_parts = [split_string.size, max_parts*2-1].min
     split_string[0..max_parts].join(" ")
+  end
+
+  def max_parts
+    [split_string.size, max_parts*2-1].min
   end
 end

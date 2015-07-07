@@ -1,0 +1,12 @@
+  <div class="second_layer">
+  <div class="row" data-equalizer>
+    <div class="column large-11">
+      <h1>Goalpin - achieve your goals</h1>
+    </div>
+    <div class="column large-1">
+      <%= "Logged in as #{current_user.email}" %>
+      <br>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+    </div>
+  </div>
+</div>

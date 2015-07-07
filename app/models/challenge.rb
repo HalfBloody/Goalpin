@@ -57,6 +57,14 @@ class Challenge < ActiveRecord::Base
     self.mentors.include? user
   end
 
+  def last_milestone_completed_at
+    if self.last_milestone
+      self.last_milestone.completed_at
+    else
+      self.start_date
+    end
+  end
+
   def time_progress
     ([[(days_since_start.to_f / total_days.to_f), 1].min, 0].max * 100)
   end

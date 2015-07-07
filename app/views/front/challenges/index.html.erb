@@ -1,3 +1,5 @@
+<%= render partial: "front/header" %>
+
 <div class="background_color">
   <div class="second_layer">
     <h1>Updates from your mentees</h1>
@@ -6,7 +8,7 @@
         <div class= "row">
           <div class="column large-12">
             <%= "#{challenge.challenger.email} has completed his last milestone " %>
-            <%= "#{time_diff_string(challenge.last_milestone.completed_at.utc, Time.now.utc)} ago. The challenge is #{challenge.status}." %>
+            <%= "#{time_diff_string(challenge.last_milestone_completed_at.utc, Time.now.utc)} ago. The challenge is #{challenge.status}." %>
           </div>
           <div class="row">
             <div class="column large-6">
