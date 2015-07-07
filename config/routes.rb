@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  namespace :front do
+  get 'messages/create'
+  end
+
   root 'front/challenges#index'
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 
