@@ -1,6 +1,7 @@
 class Front::MessagesController < ApplicationController
   def create
     @message = Message.create(message_params)
+    MessageMailer.message_notification(@message).deliver
     redirect_to :back
 
   end
