@@ -1,0 +1,89 @@
+
+<% if challenge.behind_schedule? %>
+  <div class="row header">
+    <div class="small-12 column">
+      <h1>
+        <%= "Your help is needed." %>
+      </h1>
+    </div>
+  </div>
+  <div class="row header">
+    <div class="small-12 column">
+      <h2>
+        <%= "Your friend is behind with his #{challenge.typus} challenge" %>
+      </h2>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="small-12 column">
+      <%= "#{challenge.time_progress.round.to_s}% of the challenge time has passed but your friend only finished #{challenge.milestone_progress.to_i}% of your milestones." %>
+    </div>
+  </div>
+<% elsif challenge.finished? %>
+
+<div class="row header">
+    <div class="small-12 column">
+      <h1>
+        <%= "Time to congratulate!" %>
+      </h1>
+    </div>
+  </div>
+  <div class="row header">
+    <div class="small-12 column">
+      <h2>
+        <%= "Your friend finished her #{challenge.typus} challenge. Send him a message to cheer her." %>
+      </h2>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="small-12 column">
+      <%= "Your friend finished her challenge #{time_diff_string(challenge.finished_at, challenge.end_date)} in advance. That's faboulicious!" %>
+    </div>
+  </div>
+
+
+<% else %>
+  <div class="row header">
+    <div class="small-12 column">
+      <h1>
+        <%= "All going as planned!" %>
+      </h1>
+    </div>
+  </div>
+  <div class="row header">
+    <div class="small-12 column">
+      <h2>
+        <%= "Your friend's #{challenge.typus} challenge is on schedule." %>
+      </h2>
+    </div>
+  </div>  
+  <div class="row">
+    <div class="small-12 column">
+      <%= "#{challenge.time_progress.round.to_s}% of his time has passed and he already finished #{challenge.milestone_progress.to_i}% of his milestones." %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+  <div class="small-6 column">
+    The challenge started on: 
+    <%= challenge.start_date.strftime("%e. %B %Y") %>
+  </div>
+</div>
+<div class="row">
+  <div class="small-6 column">
+    The challenge ends on: 
+    <%= challenge.end_date.strftime("%e. %B %Y") %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-6 column">
+    Your friend completed: 
+    <%= "#{@challenge.finished_milestones} out of #{@challenge.number_of_milestones} milestones" %>
+  </div>
+  <div class="small-6 column">
+    <%= link_to "All milestones", "#", id: "show_milestones" %>
+    
+  </div>  
+</div>
