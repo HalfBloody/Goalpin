@@ -10,6 +10,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  challenge_id :integer
+#  thread_id    :integer
 #
 
 FactoryGirl.define do

@@ -10,6 +10,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  challenge_id :integer
+#  thread_id    :integer
 #
 
 class Message < ActiveRecord::Base
@@ -17,4 +18,21 @@ class Message < ActiveRecord::Base
   belongs_to :recipient, class_name: "User"
   belongs_to :challenge
 
+  def self.conversation(thread_id)
+    Message.find_by(thread_id: thread_id)
+  end
+
+  def self.split_by_thread(messages)
+    messages.group_by(&:thread_id)
+  end
+
+  def self.newest(messages)
+    messages.order("created_at DESC").first
+  end
+
+  def self.newest_by_thread(messages)
+    
+    threads = self.split_by_thread(messages)
+    threads.map { |message| Message.newest(message) }
+  end
 end

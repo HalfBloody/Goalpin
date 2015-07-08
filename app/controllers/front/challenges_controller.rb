@@ -28,10 +28,11 @@ class Front::ChallengesController < ApplicationController
   def show
     @challenge = Challenge.find(params[:id])
     @is_owner = @challenge.owner?(current_user)
-    @is_mentor = @challenge.mentor?(current_user)
-    if @is_owner || @is_mentor
+    if @is_owner
       @invite = Invite.new
       @invites = @challenge.invites.order(created_at: :desc)
+      @messages = Message.newest_by_thread(@challenge.messages)
+
       @challenge_setting = @challenge.challenge_setting
       @finished_milestones = Milestone.where(challenge_id: params[:id])
       @number_of_unfinished_milestones = @challenge.number_of_milestones - @challenge.finished_milestones

@@ -23,6 +23,7 @@ class Challenge < ActiveRecord::Base
   
   has_one :challenge_setting
   has_many :milestones
+  has_many :messages
 
   accepts_nested_attributes_for :milestones
 
@@ -63,6 +64,11 @@ class Challenge < ActiveRecord::Base
     else
       self.start_date
     end
+  end
+
+  def self.conversations
+    self.messages
+
   end
 
   def time_progress

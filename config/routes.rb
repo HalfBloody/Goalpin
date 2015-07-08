@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
   namespace :front do
+  get 'messages/show'
+  end
+
+  namespace :front do
   get 'messages/create'
   end
 
