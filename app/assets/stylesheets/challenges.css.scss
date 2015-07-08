@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  background-color: #984AE2;
+  background-color: #FCE0D4;
+  padding: 25px;
 }
 
 .second_layer {
@@ -12,6 +13,14 @@ body {
   border-radius: 8px;
   padding: 20px;
   margin: 20px;
+}
+
+.box {
+  background: #FFFFFF;
+  border: 1px solid #979797;
+  border-radius: 8px;
+  padding: 0px;
+  margin: 0px;
 }
 
 .active {

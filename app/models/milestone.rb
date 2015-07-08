@@ -13,6 +13,8 @@ class Milestone < ActiveRecord::Base
   belongs_to :challenge
 
   def self.complete(challenge_id)
+    # If milestones are not predifined, this works
+    # If milestones are predefined and ordered this won't work
     @milestone = self.new(challenge_id: challenge_id, completed_at: Time.now)
     if @milestone.save
       @milestone
