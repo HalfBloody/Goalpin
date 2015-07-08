@@ -3,7 +3,11 @@
   <%= render partial: "front/header" %>
 
   <div class="second_layer">
-    <h1>Updates from your mentees</h1>
+    <div class="row">
+      <div class="column large-9">
+        <h1>Updates from your mentees</h1>
+      </div>
+    </div>
     <% if @mentored_challenges %>
       <% @mentored_challenges.each do |challenge| %>
         <div class= "row">
@@ -11,19 +15,31 @@
             <%= "#{challenge.challenger.email} has completed his last milestone " %>
             <%= "#{time_diff_string(challenge.last_milestone_completed_at.utc, Time.now.utc)} ago. The challenge is #{challenge.status}." %>
           </div>
-          <div class="row">
-            <div class="column large-6">
-              <%= link_to "Send a quick message of encouragement", front_mentor_challenge_path(challenge), class: "button" %>
+        </div>
+        <div class="row">
+          <div class="column large-6">
+            <div class="button_box">
+              <%= link_to "Send a quick message of encouragement", front_mentor_challenge_path(challenge), class: "button small" %>
             </div>
           </div>
         </div>
-        
       <% end %>
-
+    <% else %>
+      <div class="row">
+        <div class="column large-9">
+          <p>
+            You don't have any mentees yet.
+          </p>
+        </div>
+      </div>
     <% end %>
   </div>
   <div class="second_layer">
-    <h1>Check your current challenges</h1>
+    <div class="row">
+      <div class="column large-9">
+        <h1>Check your current challenges</h1>
+      </div>
+    </div>
     <% if @challenges %>
       <% @challenges.each do |challenge| %>
     <div class="row">
@@ -46,6 +62,14 @@
       Start a new challenge! %>
     </div>
     <% end %>
-    <%= link_to "Add a new challenge", new_front_challenge_path %>
+    <div class="row">
+      <div class="column large-9">
+      </div>
+      <div class="column large-3">
+        <div class="button_box">
+          <%= link_to "Add a new challenge", new_front_challenge_path, class: "button small" %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -1,34 +1,12 @@
+<div class="box">
+  <h2>
+    Challenge settings:
+  </h2>
 
-<h2>
-  Challenge settings:
-</h2>
+  <%= simple_form_for [:front, challenge, challenge_setting] do |f| %>
 
-<%= simple_form_for [:front, challenge, challenge_setting] do |f| %>
-
-  <%= f.input :daily_email %>
-  <%= f.input :weekly_email %>
-  <%= f.button :submit %>
-<% end %>
-<!-- 
-<div class="switch">
-  <% if challenge.challenge_setting.daily_email %>
-    <input id="daily_email" type="checkbox" checked></input>
-    <label for="daily_email">Daily email:</label>
-  <% else %>
-    <input id="daily_email" type="checkbox"></input>
-    <label for="daily_email">Daily email:</label>
+    <%= f.input :daily_email %>
+    <%= f.input :weekly_email %>
+    <%= f.button :submit %>
   <% end %>
 </div>
-<div class="switch">
-  <% if challenge.challenge_setting.weekly_email %>
-      <input id="weekly_email" type="checkbox" checked></input>
-    <label for="weekly_email">Weekly email:</label>
-  <% else %>
-      <input id="weekly_email" type="checkbox" ></input>
-    <label for="weekly_email">Weekly email:</label>
-  <% end %>
-</div>
-
-
-
- -->

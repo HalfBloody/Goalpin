@@ -19,8 +19,9 @@ body {
   background: #FFFFFF;
   border: 1px solid #979797;
   border-radius: 8px;
-  padding: 0px;
+  padding: 10px;
   margin: 0px;
+  width: auto;
 }
 
 .active {
@@ -28,12 +29,13 @@ body {
 
 }
 
-.button {
-  
-  
-}
-
 .hidden {
   display: none ;
+
+}
+
+
+.button_box {
+  margin: 20px 20px 20px 0px;
 
 }
