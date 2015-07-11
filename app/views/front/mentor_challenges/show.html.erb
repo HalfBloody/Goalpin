@@ -30,12 +30,14 @@
 </div>
 
 <div id="message_dialog">
-  <%= simple_form_for [:front, @message] do |f| %>
-    <%= f.input :subject %>
-    <%= f.input :text, as: :text %>
+  <%= simple_form_for [:front, @conversation] do |f| %>
     <%= f.input :challenge_id, as: :hidden, input_html: { value: @challenge.id } %>
-    <%= f.input :recipient_id, as: :hidden, input_html: { value: @challenge.user_id } %>
-    <%= f.input :sender_id, as: :hidden, input_html: { value: current_user.id } %>
+    <%= f.simple_fields_for :messages do |m| %>
+      <%= m.input :subject %>
+      <%= m.input :text, as: :text %>
+      <%= m.input :recipient_id, as: :hidden, input_html: { value: @challenge.user_id } %>
+      <%= m.input :sender_id, as: :hidden, input_html: { value: current_user.id } %>
+    <% end %>
     <%= f.button :submit %>
   <% end %>
 </div>

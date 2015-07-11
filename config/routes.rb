@@ -1,14 +1,5 @@
 Rails.application.routes.draw do
 
-
-  namespace :front do
-  get 'messages/show'
-  end
-
-  namespace :front do
-  get 'messages/create'
-  end
-
   root 'front/challenges#index'
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 
@@ -19,7 +10,9 @@ Rails.application.routes.draw do
       resources :invites, only: [ :new, :create ]
     end
     resources :mentor_challenges, only: [ :show ]
-    resources :messages, only: [ :create ]
+    resources :conversations, only: [ :create, :show ] do
+      resources :messages, only: [ :create, :new ]
+    end
   end
 
 

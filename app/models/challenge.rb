@@ -23,7 +23,7 @@ class Challenge < ActiveRecord::Base
   
   has_one :challenge_setting
   has_many :milestones
-  has_many :messages
+  has_many :conversations
 
   accepts_nested_attributes_for :milestones
 

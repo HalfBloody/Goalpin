@@ -32,16 +32,17 @@
 
 <div class="box">
   <div class="row">
-    <% @messages.each do |message| %>
+    <% @conversations.each do |conversation| %>
+      <% @newest_message = conversation.newest_message %>
       <div class="row">
         <div class="column large-4">
-          <%= "From: #{message.sender.email}" %>
+          <%= "From: #{@newest_message.sender.email}" %>
         </div>
         <div class="column large-4">
-          <%= message.subject %>
+          <%= link_to @newest_message.subject, front_conversation_path(conversation) %>
         </div>
         <div class="column large-4">
-          <%= message.text %>
+          <%= @newest_message.text %>
         </div>
       </div>
     <% end %>

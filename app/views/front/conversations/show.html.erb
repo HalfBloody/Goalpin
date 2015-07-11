@@ -1,0 +1,22 @@
+
+<% @conversation.messages.each do |message| %>
+<div class="box">
+  <div class="row">
+    <div class="column large-6">
+      <%= message.sender.email %>
+    </div>
+    <div class="column large-6">
+      <%= "Subject: #{message.subject}" %>
+    </div>    
+  </div>
+    <div class="row">
+    <div class="column large-6">
+    </div>          
+    <div class="column large-6">
+      <%= "Content: #{message.text}" %>
+    </div>
+  </div>
+</div>
+  
+
+<% end %>

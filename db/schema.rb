@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150708114114) do
+ActiveRecord::Schema.define(version: 20150711144359) do
 
   create_table "challenge_settings", force: true do |t|
     t.integer  "challenge_id"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20150708114114) do
 
   add_index "challenges", ["user_id"], name: "index_challenges_on_user_id"
 
+  create_table "conversations", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "challenge_id"
+  end
+
   create_table "invites", force: true do |t|
     t.integer  "mentor_id"
     t.datetime "created_at"
@@ -54,8 +60,7 @@ ActiveRecord::Schema.define(version: 20150708114114) do
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "challenge_id"
-    t.integer  "thread_id"
+    t.integer  "conversation_id"
   end
 
   create_table "milestones", force: true do |t|

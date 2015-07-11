@@ -31,7 +31,7 @@ class Front::ChallengesController < ApplicationController
     if @is_owner
       @invite = Invite.new
       @invites = @challenge.invites.order(created_at: :desc)
-      @messages = Message.newest_by_thread(@challenge.messages)
+      @conversations = @challenge.conversations
 
       @challenge_setting = @challenge.challenge_setting
       @finished_milestones = Milestone.where(challenge_id: params[:id])
