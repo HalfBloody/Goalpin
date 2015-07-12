@@ -7,6 +7,7 @@
 #  completed_at :datetime
 #  created_at   :datetime
 #  updated_at   :datetime
+#  milestone_id :integer
 #
 
 FactoryGirl.define do
