@@ -29,15 +29,5 @@
   <% end %>
 </div>
 
-<div id="message_dialog">
-  <%= simple_form_for [:front, @conversation] do |f| %>
-    <%= f.input :challenge_id, as: :hidden, input_html: { value: @challenge.id } %>
-    <%= f.simple_fields_for :messages do |m| %>
-      <%= m.input :subject %>
-      <%= m.input :text, as: :text %>
-      <%= m.input :recipient_id, as: :hidden, input_html: { value: @challenge.user_id } %>
-      <%= m.input :sender_id, as: :hidden, input_html: { value: current_user.id } %>
-    <% end %>
-    <%= f.button :submit %>
-  <% end %>
-</div>
+<%= render partial: "/front/messages/new_message", locals: { challenge: @challenge, user: current_user, conversation: @conversation } %>
+

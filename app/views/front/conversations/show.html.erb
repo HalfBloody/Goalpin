@@ -1,22 +1,24 @@
-
-<% @conversation.messages.each do |message| %>
-<div class="box">
-  <div class="row">
-    <div class="column large-6">
-      <%= message.sender.email %>
-    </div>
-    <div class="column large-6">
-      <%= "Subject: #{message.subject}" %>
-    </div>    
-  </div>
+<% @conversation2.messages.each do |message| %>
+  <div class="box">
     <div class="row">
-    <div class="column large-6">
-    </div>          
-    <div class="column large-6">
-      <%= "Content: #{message.text}" %>
+      <div class="column large-4">
+        <%= "Sent #{time_diff_string(message.created_at, Time.now)} ago." %>
+      </div>          
+      <div class="column large-4">
+        <%= "Sender: #{message.sender.email}" %>
+      </div>
+      <div class="column large-4">
+        <%= "Subject: #{message.subject}" %>
+      </div>    
+    </div>
+      <div class="row">
+      <div class="column large-8">
+        <%= "Content: #{message.text}" %>
+      </div>
+      <div class="column large-4">
+      </div>                
     </div>
   </div>
-</div>
-  
-
 <% end %>
+
+<%= render partial: "/front/messages/new_message", locals: { challenge: @challenge, conversation: @conversation, user: current_user, message: @message } %>

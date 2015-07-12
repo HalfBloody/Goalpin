@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       resources :invites, only: [ :new, :create ]
     end
     resources :mentor_challenges, only: [ :show ]
-    resources :conversations, only: [ :create, :show ] do
+    resources :conversations, only: [ :create, :show, :update ] do
       resources :messages, only: [ :create, :new ]
     end
   end
