@@ -1,3 +1,12 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+
+
+$(document).on "page:change", ->
+
+
+  $("#show_message_dialog").click ->
+    if ($("#message_dialog").hasClass("hidden"))
+      $("#message_dialog").removeClass("hidden")
+      $("#show_message_dialog").text("hide dialog")
+    else
+      $("#message_dialog").addClass("hidden")
+      $("#show_message_dialog").text("Send a message")

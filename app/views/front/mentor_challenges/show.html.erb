@@ -29,5 +29,8 @@
   <% end %>
 </div>
 
-<%= render partial: "/front/messages/new_message", locals: { challenge: @challenge, user: current_user, conversation: @conversation, message: @message } %>
+<a href="#" class='button' id="show_message_dialog">Send a message</a>
 
+<div id="message_dialog" class="hidden">
+  <%= render partial: "/front/messages/new_message", locals: { challenge: @challenge, user: current_user, conversation: @conversation, message: @message } %>
+</div>

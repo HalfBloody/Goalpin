@@ -1,4 +1,4 @@
-<div id="message_dialog">
+<div id="message_form">
   <%= simple_form_for [:front, @conversation] do |g| %>
     <%= g.input :challenge_id, as: :hidden, input_html: { value: @challenge.id } %>
     <%= g.simple_fields_for :messages, @message do |f| %>
