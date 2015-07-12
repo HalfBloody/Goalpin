@@ -1,7 +1,7 @@
 <div id="message_dialog">
   <%= simple_form_for [:front, @conversation] do |g| %>
     <%= g.input :challenge_id, as: :hidden, input_html: { value: @challenge.id } %>
-    <%= g.simple_fields_for :messages, @conversation.messages.build(subject: "example") do |f| %>
+    <%= g.simple_fields_for :messages, @message do |f| %>
       <%= f.input :subject %>
       <%= f.input :text, as: :text %>
       <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id } %>

@@ -25,6 +25,7 @@ class Front::ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
     @challenge = @conversation.challenge
     @conversation2 = Conversation.find(params[:id])
+    @message = @conversation.messages.build
 
     @conversation.messages.build
 

@@ -6,7 +6,7 @@ class Front::MentorChallengesController < ApplicationController
     if @is_mentor
       
       @conversation = Conversation.new(challenge_id: @challenge.id)
-      @conversation.messages.build
+      @message = @conversation.messages.build
       @finished_milestones = Milestone.where(challenge_id: params[:id])
       @number_of_unfinished_milestones = @challenge.number_of_milestones - @challenge.finished_milestones
       @unfinished_milestones = []
