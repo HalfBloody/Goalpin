@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
 
-  namespace :front do
-  get 'typus/new'
-  end
 
   root 'front/challenges#index'
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 
   namespace :front do
     resources :mentor_challenges, only: [ :show ]
-    resources :typus, only: [ :new ]
+    resources :challenge_types, only: [ :new ]
     resources :challenges, only: [ :index, :show, :new, :create ] do
       resources :milestones, only: [ :create ]
       resources :challenge_settings, only: [ :new, :create, :update ]
