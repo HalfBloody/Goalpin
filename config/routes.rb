@@ -8,14 +8,20 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 
   namespace :front do
+    resources :mentor_challenges, only: [ :show ]
+    resources :typus, only: [ :new ]
     resources :challenges, only: [ :index, :show, :new, :create ] do
       resources :milestones, only: [ :create ]
       resources :challenge_settings, only: [ :new, :create, :update ]
       resources :invites, only: [ :new, :create ]
     end
-    resources :mentor_challenges, only: [ :show ]
-    resources :conversations, only: [ :create, :show, :update ] do
+    resources :conversations, only: [ :create, :show, :update ] do    
       resources :messages, only: [ :create, :new ]
+    end
+    namespace :learning do
+      resources :challenges, only: [ :new, :create ] do
+        resources :milestones, only: [ :new, :create ]
+      end
     end
   end
 
