@@ -8,6 +8,7 @@
 #  created_at   :datetime
 #  updated_at   :datetime
 #  milestone_id :integer
+#  name         :string(255)
 #
 
 FactoryGirl.define do

@@ -12,6 +12,7 @@
 #  facebook             :boolean
 #  created_at           :datetime
 #  updated_at           :datetime
+#  name                 :string(255)
 #
 
 class Challenge < ActiveRecord::Base

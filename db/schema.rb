@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150712183048) do
+ActiveRecord::Schema.define(version: 20150713095839) do
 
   create_table "challenge_settings", force: true do |t|
     t.integer  "challenge_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150712183048) do
     t.boolean  "facebook"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "challenges", ["user_id"], name: "index_challenges_on_user_id"
@@ -69,6 +70,8 @@ ActiveRecord::Schema.define(version: 20150712183048) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "milestone_id"
+    t.string   "name"
+    t.datetime "finish_until"
   end
 
   add_index "milestones", ["challenge_id"], name: "index_milestones_on_challenge_id"
