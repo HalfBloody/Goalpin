@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :front do
+  get 'typus/new'
+  end
+
   root 'front/challenges#index'
   devise_for :users, controllers: { omniauth_callbacks: "callbacks" }
 
