@@ -1,0 +1,7 @@
+
+
+<%= simple_form_for sub_milestone, controller: 'front/learning/sub_milestones', action: 'create', method: 'post' do |f| %>
+  <%= f.input :name %>
+  <%= f.input :milestone_id, as: :hidden %>
+  <%= f.submit %>
+<% end %>
