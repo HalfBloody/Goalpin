@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150713100308) do
+ActiveRecord::Schema.define(version: 20150714162850) do
 
   create_table "challenge_settings", force: true do |t|
     t.integer  "challenge_id"
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150713100308) do
     t.integer  "milestone_id"
     t.string   "name"
     t.datetime "finish_until"
+    t.integer  "days"
   end
 
   add_index "milestones", ["challenge_id"], name: "index_milestones_on_challenge_id"
