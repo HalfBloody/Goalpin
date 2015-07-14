@@ -1,0 +1,31 @@
+
+<% if milestone.id %>
+  <div class="milestone box" id=
+    <%="milestone_#{milestone.id}"%>
+  >
+    <div class="row">
+      <div class="column large-10">
+        <%= "Name: #{milestone.name}" %>
+      </div>
+      <div class="column large-2">
+        <%= link_to "delete", front_learning_challenge_milestone_path(milestone.challenge, milestone), remote: true, method: :delete %>
+      </div>      
+    </div>
+    <div class="row">
+      <div class="column large-10">
+        <%= milestone.completed_at ? "Milestone completed at #{milestone.completed_at}" : "Milestone not completed" %>
+      </div>
+      <div class="column large-2">
+        <%= link_to "add subtask", new_front_learning_challenge_milestone_sub_milestone_path(milestone_id: milestone.id), remote: true %>
+      </div>
+    </div>
+  </div>
+  <div class="new_sub_milestone_form" id="milestone_<%= milestone.id %>_new_sub_milestone_form">
+
+  </div>
+  <div id="milestone_<%= milestone.id %>_sub_milestones">
+    <% milestone.sub_milestones.each do |sub_milestone| %>
+
+    <% end %>
+  </div>
+<% end %>

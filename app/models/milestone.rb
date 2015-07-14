@@ -9,12 +9,13 @@
 #  updated_at   :datetime
 #  milestone_id :integer
 #  name         :string(255)
+#  finish_until :datetime
 #
 
 class Milestone < ActiveRecord::Base
   belongs_to :challenge
   belongs_to :parent_milestone, class_name: "Milestone", foreign_key: "milestone_id"
-  has_many :child_milestones, class_name: "Milestone"
+  has_many :sub_milestones, class_name: "Milestone"
 
   def self.complete(challenge_id)
     # If milestones are not predifined, this works

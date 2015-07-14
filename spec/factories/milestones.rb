@@ -9,6 +9,7 @@
 #  updated_at   :datetime
 #  milestone_id :integer
 #  name         :string(255)
+#  finish_until :datetime
 #
 
 FactoryGirl.define do

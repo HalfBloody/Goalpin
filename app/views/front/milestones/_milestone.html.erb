@@ -1,7 +1,7 @@
 <div class="row">
   <% if milestone.completed_at.nil? %>
     <div class="small-3 column">
-      <% if is_owner %>
+      <% if @is_owner %>
         <%= link_to "complete now?", front_challenge_milestones_path(challenge), remote: true, method: "post" %>
       <% end %>
     </div>

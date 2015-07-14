@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
   include TimeUtils
   helper_method :time_diff_string
 
+
+
+
+
 end

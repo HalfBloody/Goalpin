@@ -1,1 +1,20 @@
-<h1>Yay!</h1>
+<div class="main_box">
+  <div class="second_layer">
+    <h1>Define your Learning Challenge</h1>
+
+
+
+    
+
+    <div class="submit_box">
+      <%= simple_form_for [:front, :learning, @challenge] do |f| %>
+        <%= f.input :name, label: 'Enter a descriptive name' %>
+        <%= f.input :description, as: :text, wrapper_html: { class: 'hidden' }, label: 'Write a short description of what the challenge is about' %>
+        <%= f.input :typus, as: :hidden, input_html: { value: 'learning_challenge' } %>
+        <div class="submit_button hidden">
+          <%= f.button :submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

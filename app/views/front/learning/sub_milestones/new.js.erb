@@ -1,0 +1,9 @@
+
+// console.log(" j <%= @sub_milestone %>")
+$(
+  "#milestone_<%= j (@milestone.id.to_s) %>_sub_milestones").append(
+  "<%= j (render partial: 'front/learning/sub_milestones/sub_milestone', locals: { milestone: @sub_milestone } ) %>"
+  );
+
+
+

@@ -21,6 +21,8 @@ class Invite < ActiveRecord::Base
   validates :email, format: Devise::email_regexp
 
   before_create :add_token
+  before_create :add_inviter
+
 
 
 
@@ -29,7 +31,12 @@ class Invite < ActiveRecord::Base
   def add_token
     token = SecureRandom.hex(30).upcase
     self.token = token
+  
   end
 
+  def add_inviter
+    self.inviter_id = Challenge.find(self.challenge_id).challenger.id
+  
+  end
 end
 

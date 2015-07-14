@@ -2,6 +2,7 @@ class Front::MilestonesController < ApplicationController
   def create
     @challenge = Challenge.find(params[:challenge_id])
     @challenge.complete_milestone
+    @is_owner = @challenge.owner?(current_user)
     @number_of_unfinished_milestones = @challenge.number_of_milestones - @challenge.finished_milestones
     puts @number_of_unfinished_milestones
     @finished_milestones = Milestone.where(challenge_id: params[:challenge_id])

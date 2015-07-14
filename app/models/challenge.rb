@@ -13,6 +13,7 @@
 #  created_at           :datetime
 #  updated_at           :datetime
 #  name                 :string(255)
+#  description          :string(255)
 #
 
 class Challenge < ActiveRecord::Base
@@ -28,6 +29,9 @@ class Challenge < ActiveRecord::Base
 
   accepts_nested_attributes_for :milestones
 
+  # Learning challenge validations
+  validates :name, presence: true, if: :is_running_challenge?, on: :create
+
   before_create :reset_milestones
 
   STATUS = {
@@ -36,6 +40,9 @@ class Challenge < ActiveRecord::Base
     on_track: "on track",
     behind_schedule: "behind schedule"
   }
+
+  scope :learning_challenges, -> { where(typus: 'learning_challenge') }
+  scope :running_challenges, -> { where(typus: 'running_challenges') }
 
   def status
     # status of a particular challenge
@@ -124,5 +131,9 @@ class Challenge < ActiveRecord::Base
 
   def days_since_start
     ((Time.now - self.start_date)/1.day).to_i
+  end
+
+  def is_running_challenge?
+    typus == 'learning_challenge' ? true : false
   end
 end

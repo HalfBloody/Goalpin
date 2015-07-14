@@ -1,4 +1,5 @@
 class Front::ChallengesController < ApplicationController
+  
   before_filter :authenticate_user!, :update_invite
 
   def index

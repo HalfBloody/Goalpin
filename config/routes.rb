@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     end
     namespace :learning do
       resources :challenges, only: [ :new, :create ] do
-        resources :milestones, only: [ :new, :create ]
+        resources :milestones, only: [ :new, :create, :destroy ] do
+          resources :sub_milestones, only: [ :new, :create, :destroy ], shallow: true
+        end
       end
     end
   end
