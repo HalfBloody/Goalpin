@@ -1,12 +1,12 @@
 class Front::Learning::SubMilestonesController < ApplicationController
   def new
     @milestone = Milestone.find(params[:milestone_id])
-    @sub_milestone = @milestone.sub_milestones.create(name: "new subtask (pls change name)")
+    @sub_milestone = @milestone.sub_milestones.build
     respond_to :js
   end
 
   def create
-    @sub_milestone = Milestone.create(milestone_params)
+    @sub_milestone = Milestone.create(sub_milestone_params)
     respond_to :js
   end
 

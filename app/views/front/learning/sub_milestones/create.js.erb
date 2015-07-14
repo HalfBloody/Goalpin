@@ -1,0 +1,6 @@
+
+
+$("#milestone_<%= j (@sub_milestone.milestone_id.to_s) %>_sub_milestones").append(
+  "<%= j (render partial: 'front/learning/sub_milestones/sub_milestone', locals: { milestone: @sub_milestone } ) %>"
+  );
+$(".new_sub_milestone_form").find("#sub_milestone_name").val("");

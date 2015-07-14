@@ -1,7 +1,13 @@
 
-
-<%= simple_form_for sub_milestone, controller: 'front/learning/sub_milestones', action: 'create', method: 'post' do |f| %>
-  <%= f.input :name %>
-  <%= f.input :milestone_id, as: :hidden %>
-  <%= f.submit %>
-<% end %>
+<div class="new_sub_milestone_form" id="milestone_<%= sub_milestone.milestone_id %>_new_sub_milestone_form">
+  <div class="row">
+    <div class="column small-12">
+      <%= simple_form_for sub_milestone, url: front_learning_challenge_milestone_sub_milestones_path, method: :post, remote: true do |f| %>
+        <%= f.input :name %>
+        
+        <%= f.input :milestone_id, as: :hidden %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  </div>
+</div>

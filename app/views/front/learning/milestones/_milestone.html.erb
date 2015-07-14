@@ -20,9 +20,8 @@
           <%= link_to "add subtask", new_front_learning_challenge_milestone_sub_milestone_path(milestone_id: milestone.id), remote: true %>
         </div>
       </div>
-    </div>
-    <div class="new_sub_milestone_form" id="milestone_<%= milestone.id %>_new_sub_milestone_form">
-
+      <div class="new_sub_milestone_form" id="milestone_<%= milestone.id %>_new_sub_milestone_form">
+      </div>
     </div>
     <div id="milestone_<%= milestone.id %>_sub_milestones">
       <% milestone.sub_milestones.each do |sub_milestone| %>
