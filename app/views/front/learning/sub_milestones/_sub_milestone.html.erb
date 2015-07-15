@@ -6,8 +6,11 @@
     <div class="row">
       <div class="column large-2">
       </div>
-      <div class="column large-5">
+      <div class="column large-3">
         <%= "Name: #{sub_milestone.name}" %>
+      </div>
+      <div class="column large-2">
+        <%= select_tag "#select_days_milestone_{sub_milestone.id}", options_for_select((0..100).to_a, sub_milestone.days), class: 'select_sub_milestone_days', data: { url: front_learning_sub_milestone_path(sub_milestone), days: sub_milestone.days, parent_id: sub_milestone.milestone_id } %>
       </div>
       <div class="column large-3">
         <%= "Planned for #{sub_milestone.days.to_s} days" %>

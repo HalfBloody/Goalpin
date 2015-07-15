@@ -40,7 +40,7 @@ class Milestone < ActiveRecord::Base
   end
 
   def sub_milestones_days
-    self.sub_milestones.pluck(:days).reduce { |sum, days| (sum + days)  }
+    self.sub_milestones.pluck(:days).sum
   end
 
   def sub_milestone_day_array

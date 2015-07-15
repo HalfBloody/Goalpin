@@ -1,4 +1,5 @@
 class Front::Learning::SubMilestonesController < ApplicationController
+  respond_to :json, only: :update
   def new
     @milestone = Milestone.find(params[:milestone_id])
     @sub_milestone = @milestone.sub_milestones.build
@@ -19,8 +20,23 @@ class Front::Learning::SubMilestonesController < ApplicationController
     respond_to :js
   end
 
+  def update
+    puts params
+    @sub_milestone = Milestone.find(params[:id])
+    if @sub_milestone.update(sub_milestone_params)
+      puts @sub_milestone.to_json
+      respond_to do |format|
+        format.json { respond_with status: 200 }
+      end
+    else
+      respond_to do |format|
+        format.json { render status: 406 }
+      end
+    end
+  end
+
   private
   def sub_milestone_params
-    params.require(:milestone).permit(:milestone_id, :challenge_id, :name, :days)
+    params.permit(:milestone_id, :challenge_id, :name, :days)
   end
 end

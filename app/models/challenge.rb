@@ -134,6 +134,6 @@ class Challenge < ActiveRecord::Base
   end
 
   def is_running_challenge?
-    typus == 'learning_challenge' ? true : false
+    typus == 'learning_challenge'
   end
 end
