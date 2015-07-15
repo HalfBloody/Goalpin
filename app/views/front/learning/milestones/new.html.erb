@@ -2,6 +2,7 @@
 Add the different sub-goals you want to achieve:
 <%= simple_form_for [:front, :learning, @challenge, @new_milestone], remote: true do |f| %>
   <%= f.input :name %>
+  <%= f.input :days %>
   <%= f.submit %>
 <% end %>
 

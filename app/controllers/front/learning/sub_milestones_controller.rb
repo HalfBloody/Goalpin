@@ -20,6 +20,6 @@ class Front::Learning::SubMilestonesController < ApplicationController
 
   private
   def sub_milestone_params
-    params.require(:milestone).permit(:milestone_id, :challenge_id, :name)
+    params.require(:milestone).permit(:milestone_id, :challenge_id, :name, :days)
   end
 end
