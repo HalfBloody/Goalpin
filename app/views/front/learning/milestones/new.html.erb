@@ -8,3 +8,11 @@ Add the different sub-goals you want to achieve:
 <div class="milestones">
   <%= render partial: 'front/learning/milestones/milestone', collection: @milestones %>
 </div>
+
+<div class="hidden">
+  <%= simple_form_for [:front, :learning, @challenge, @update_milestone] do |f| %>
+  <%= f.input :name, as: :hidden %>
+  <%= f.input :days, as: :hidden %>
+  <%= f.submit %>
+</div>
+<% end %>

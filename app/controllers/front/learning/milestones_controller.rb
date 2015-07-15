@@ -5,6 +5,7 @@ class Front::Learning::MilestonesController < ApplicationController
     @challenge = Challenge.find(params[:challenge_id])
     @milestones = @challenge.milestones
     @new_milestone = @challenge.milestones.build
+    @update_milestone = Milestone.new
   end
 
   def create
