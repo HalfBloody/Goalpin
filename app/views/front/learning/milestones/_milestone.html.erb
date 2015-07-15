@@ -16,20 +16,18 @@
         <div class="column large-6">
           <%= milestone.completed_at ? "Milestone completed at #{milestone.completed_at}" : "Milestone not completed" %>
         </div>
-        <div class="column">
-          <%= "Planned for #{milestone.days.to_s} days" %>
+        <div class="column" id="milestone_<%= milestone.id.to_s %>_days">
+          <%= "Planned for #{milestone.sub_milestones_days} days" %>
         </div>
-        <div class="column large-2">
-          <%= link_to "add subtask", new_front_learning_challenge_milestone_sub_milestone_path(milestone_id: milestone.id), remote: true %>
+        <div class="column large-2" id="milestone_<%= milestone.id.to_s %>_add_subtask">
+          <%= link_to "add subtask", new_front_learning_challenge_milestone_sub_milestone_path(milestone_id: milestone.id), remote: true, class: "add_subtask" %>
         </div>
       </div>
       <div class="new_sub_milestone_form" id="milestone_<%= milestone.id %>_new_sub_milestone_form">
       </div>
     </div>
     <div id="milestone_<%= milestone.id %>_sub_milestones">
-      <% milestone.sub_milestones.each do |sub_milestone| %>
-
-      <% end %>
+      <%= render partial: 'front/learning/sub_milestones/sub_milestone', collection: milestone.sub_milestones %>
     </div>
   </div>
 <% end %>

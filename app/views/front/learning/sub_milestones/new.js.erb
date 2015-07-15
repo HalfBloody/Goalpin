@@ -1,11 +1,14 @@
 
-$(".new_sub_milestone_form").empty();
 
-$("#milestone_<%= j (@milestone.id.to_s) %>_new_sub_milestone_form").replaceWith(
-  "<%= j (render partial: 'front/learning/sub_milestones/new_sub_milestone_form', locals: { milestone: @milestone, sub_milestone: @sub_milestone })  %>"
-  );
+if ($("#milestone_<%= j (@milestone.id.to_s) %>_add_subtask").find("a").text() == "add subtask")
+  $(".new_sub_milestone_form").empty();
 
 
+  $("#milestone_<%= j (@milestone.id.to_s) %>_new_sub_milestone_form").replaceWith(
+    "<%= j (render partial: 'front/learning/sub_milestones/new_sub_milestone_form', locals: { milestone: @milestone, sub_milestone: @sub_milestone })  %>"
+    );
 
-
-
+  // Rename "add subtask to "close dialog"
+  $("#milestone_<%= j (@milestone.id.to_s) %>_add_subtask").find("a").html('close dialog');
+else
+  $(".new_sub_milestone_form").empty();

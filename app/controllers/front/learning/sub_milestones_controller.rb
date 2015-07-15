@@ -7,6 +7,7 @@ class Front::Learning::SubMilestonesController < ApplicationController
 
   def create
     @sub_milestone = Milestone.create(sub_milestone_params)
+    @milestone = @sub_milestone.parent_milestone
     respond_to :js
   end
 
