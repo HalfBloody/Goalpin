@@ -8,16 +8,12 @@ $(document).on 'page:change', ->
     $(this).data('days', $(this).val())
     days = $(this).data('days')
     sub_milestone_id = 'milestone_' + $(this).data('id') + '_days_text'
-    console.log(sub_milestone_id)
     
     update_milestone_days(days, sub_milestone_id)
     
+    url = $(this).data('url')
+    update_sub_milestone(url, days)
 
-    $.ajax
-      url: $(this).data('url')
-      method: 'PATCH'
-      dataType: 'script'
-      data: { days: days },
 
     milestone_id = 'milestone_' + $(this).data('parent-id')
     current_milestone = $('#' + milestone_id)
@@ -30,9 +26,16 @@ $(document).on 'page:change', ->
 
   # <!-- get_parent_milestone = (sub_milestone_id) ->
 
-  # sum_sub_milestones_days = (milestone_id) ->
+  # sum_sub_milestones_days = (milestone_id) ->  -->
 
-  # update_sub_milestone = (days) -> -->
+  update_sub_milestone = (url, days) ->
+    $.ajax
+      url: url
+      method: 'PATCH'
+      dataType: 'script'
+      data: { days: days },
 
   update_milestone_days = (days, id) ->
     $('#' + id).html('Planned for ' + String(days) + ' days')
+
+

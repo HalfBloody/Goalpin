@@ -23,7 +23,7 @@ class Front::Learning::SubMilestonesController < ApplicationController
   def update
     puts params
     @sub_milestone = Milestone.find(params[:id])
-    if @sub_milestone.update(sub_milestone_params)
+    if @sub_milestone.update(update_sub_milestone_params)
       puts @sub_milestone.to_json
       respond_to do |format|
         format.json { respond_with status: 200 }
@@ -37,6 +37,10 @@ class Front::Learning::SubMilestonesController < ApplicationController
 
   private
   def sub_milestone_params
+    params.require(:milestone).permit(:milestone_id, :challenge_id, :name, :days)
+  end
+
+  def update_sub_milestone_params
     params.permit(:milestone_id, :challenge_id, :name, :days)
   end
 end
