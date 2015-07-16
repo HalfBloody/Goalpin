@@ -38,4 +38,4 @@ $(document).on 'page:change', ->
   update_milestone_days = (days, id) ->
     $('#' + id).html('Planned for ' + String(days) + ' days')
 
-
+  $(".select_sub_milestone_days").click ->

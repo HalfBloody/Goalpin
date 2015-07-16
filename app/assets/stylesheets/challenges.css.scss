@@ -3,9 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  background-color: #FCE0D4;
   padding: 25px;
+  background-image: linear-gradient(-180deg, #7BD1FF 0%, #EBE6E3 200%);
 }
+
+
+
 
 .second_layer {
   background: #FFFFFF;
@@ -22,6 +25,7 @@ body {
   padding: 10px;
   margin: 20px;
   width: auto;
+  box-shadow: 3px 3px 4px 0px rgba(0,0,0,0.50);
 }
 
 .active {
@@ -34,8 +38,20 @@ body {
 
 }
 
+.button {
+  background-color: #0C248A;
+  font-weight: bold;
+  radius: 5px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 0px rgba(0,0,0,0.50);
+
+}
 
 .button_box {
   margin: 20px 20px 20px 0px;
+}
+
+a {
+  font-weight: bold;  
 
 }

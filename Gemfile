@@ -63,5 +63,5 @@ gem 'koala'
 # Front
 gem 'momentjs-rails'
 gem 'simple_form'
-gem 'foundation-rails'
+gem 'foundation-rails', '5.4.5'
 gem 'time_difference'
