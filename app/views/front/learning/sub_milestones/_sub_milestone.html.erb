@@ -7,7 +7,7 @@
       <div class="column large-2">
       </div>
       <div class="column large-3">
-        <%= "Name: #{sub_milestone.name}" %>
+        <%= "#{sub_milestone.name}" %>
       </div>
       <div class="column large-2">
         <%= select_tag "days_select", options_for_select((0..100).to_a, sub_milestone.days), class: 'days_select', data: { url: front_learning_sub_milestone_path(sub_milestone), days: sub_milestone.days } %>

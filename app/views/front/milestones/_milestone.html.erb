@@ -6,7 +6,11 @@
       <% end %>
     </div>
     <div class="small-9 column">
-    <%= "Milestonen No. #{milestone_counter} still has to be finished" %>
+    <% if milestone.name %>
+      <%= 'Milestone \"#{milestone.name}\" still has to be finished' %>
+    <% else %>
+      <%= "Milestone No. #{milestone_counter} still has to be finished" %>
+    <% end %>
   </div>
 <% else %>
     <div class="small-3 column">

@@ -4,6 +4,7 @@
 
 
 $(document).on 'page:change', ->
+  $('#milestone_name').focus()
   $(".days_select").change ->
     $(this).data('days', $(this).val())
     days = $(this).data('days')
@@ -48,5 +49,12 @@ $(document).on 'page:change', ->
     
     $(milestone_id_sel).find('.days_text:first').html('Planned for ' + String(days) + ' days')
 
-
+  $('.toggle_subtasks_link').click ->
+    sub_milestones = $(this).parents('.milestone').find('.sub_milestones')
+    console.log(sub_milestones.html())
+    if sub_milestones.hasClass('hidden')
+      sub_milestones.removeClass('hidden')
+    else
+      sub_milestones.addClass('hidden')
+      $(this).html('show all subtasks')
 

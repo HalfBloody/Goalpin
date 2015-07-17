@@ -1,5 +1,9 @@
 
-Add the different sub-goals you want to achieve:
+<%= link_to 'Finish setup', front_challenges_path , class: 'button' %>
+
+<div>
+  Add the different sub-goals you want to achieve:
+</div>
 <%= simple_form_for [:front, :learning, @challenge, @new_milestone], remote: true do |f| %>
   <%= f.input :name %>
   <%= f.submit %>
@@ -16,3 +20,5 @@ Add the different sub-goals you want to achieve:
   <%= f.submit %>
 </div>
 <% end %>
+
+<%= link_to 'Finish setup', front_learning_challenge_path(@challenge, redirect_url: root_path) , class: 'button', method: 'patch' %>
