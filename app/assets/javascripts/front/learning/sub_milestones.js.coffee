@@ -28,11 +28,12 @@ $(document).on 'page:change', ->
     $(sub_milestones).each (index, elem) ->
       milestone_days += parseInt($(elem).data('days'))
     milestone_days_id = milestone_id + '_days'
-    return milestone_days
+    return parseInt(milestone_days)
 
   $(".delete_sub_milestone_link").click ->
     milestone_id = $(this).parents('.milestone').attr('id')
-    days = sumMilestoneDays(milestone_id)
+    sub_milestone_days = parseInt($(this).parents('.sub_milestone').find('.days_select').data('days'))
+    days = sumMilestoneDays(milestone_id) - sub_milestone_days
     updateMilestoneDays(days, milestone_id)
 
   updateSubMilestone = (url, days) ->
