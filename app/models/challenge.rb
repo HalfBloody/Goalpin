@@ -33,6 +33,7 @@ class Challenge < ActiveRecord::Base
   validates :name, presence: true, if: :is_running_challenge?, on: :create
 
   before_create :reset_milestones
+  before_update :set_dates
 
   STATUS = {
     finished: "finished",
@@ -124,6 +125,15 @@ class Challenge < ActiveRecord::Base
     self.end_date self.last.milestone.completed_at
   end
 
+  def set_dates
+    start_date = Time.now()
+    end_date = Time.now() + sum_milestone_days.days
+  end
+
+  def sum_milestone_days
+    milestones.pluck(:days).map { |m| m.to_i }.sum
+  end
+
   private
   def total_days
     ((self.end_date - self.start_date)/1.day).to_i
@@ -136,4 +146,6 @@ class Challenge < ActiveRecord::Base
   def is_running_challenge?
     typus == 'learning_challenge'
   end
+
+
 end

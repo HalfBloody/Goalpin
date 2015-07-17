@@ -11,8 +11,12 @@ class Front::Learning::ChallengesController < ApplicationController
   end
 
   def update
-    puts('it worked')
-    redirect_to params[:redirect_url]
+    @challenge = Challenge.find(params[:id])
+    if @challenge.update(challenge_params)
+      redirect_to params[:redirect_url], notice: 'challenge successfully updated'
+    else
+      render new_front_learning_challenge_milestone_path(@challenge)
+    end
   end
 
   private

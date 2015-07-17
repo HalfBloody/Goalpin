@@ -5,6 +5,7 @@
       <%= simple_form_for sub_milestone, url: front_learning_challenge_milestone_sub_milestones_path, method: :post, remote: true do |f| %>
         <%= f.input :name %>
         <%= f.input :days %>
+        <%= f.input :challenge_id, as: :hidden, input_html: { value: milestone.challenge_id } %>
         <%= f.input :milestone_id, as: :hidden %>
         <%= f.submit %>
       <% end %>

@@ -19,6 +19,7 @@ class Milestone < ActiveRecord::Base
 
   validates :days, numericality: { only_integer: true, greater_than_or_equal_to: 0 }, 
   unless: "milestone_id.blank?"
+  validates :challenge_id, presence: true
 
   def self.complete(challenge_id)
     # If milestones are not predifined, this works

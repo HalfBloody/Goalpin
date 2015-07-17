@@ -1,6 +1,7 @@
 class Front::Learning::SubMilestonesController < ApplicationController
   respond_to :json, only: :update
   def new
+    @challenge = Challenge.find(params[:challenge_id])
     @milestone = Milestone.find(params[:milestone_id])
     @sub_milestone = @milestone.sub_milestones.build
     respond_to :js
