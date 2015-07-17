@@ -1,0 +1,4 @@
+<div class="column large-12">
+  <%= "#{challenge.challenger.email} has completed his last milestone " %>
+  <%= "#{time_diff_string(challenge.last_milestone_completed_at.utc, Time.now.utc)} ago. The challenge is #{challenge.status}." %>
+</div>

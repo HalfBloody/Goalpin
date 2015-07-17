@@ -9,8 +9,7 @@ $(document).on "page:change", ->
   selected_ms = $(".milestones_box").data("initial")
   $("#" + selected_days + "_days").addClass("active")
   $("#" + selected_ms + "_times").addClass("active")
-
-
+  
   $(".days").click ->
     days = $(this).data("days")
     end_date = moment(start_date)
