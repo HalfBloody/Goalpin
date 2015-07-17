@@ -16,7 +16,7 @@
         <div class="column large-6">
           <%= milestone.completed_at ? "Milestone completed at #{milestone.completed_at}" : "Milestone not completed" %>
         </div>
-        <div class="column milestone_days_text" id="milestone_<%= milestone.id.to_s %>_days">
+        <div class="column days_text" id="milestone_<%= milestone.id.to_s %>_days">
           <%= "Planned for #{milestone.sub_milestones_days} days" %>
         </div>
         <div class="column large-2" id="milestone_<%= milestone.id.to_s %>_add_subtask">

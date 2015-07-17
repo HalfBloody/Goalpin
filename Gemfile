@@ -38,6 +38,7 @@ group :development, :test do
   gem 'shoulda-matchers'
   gem 'selenium-webdriver' 
   gem 'byebug'
+  gem 'konacha'
 end
 
 # Use ActiveModel has_secure_password

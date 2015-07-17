@@ -4,38 +4,48 @@
 
 
 $(document).on 'page:change', ->
-  $(".select_sub_milestone_days").change ->
+  $(".days_select").change ->
     $(this).data('days', $(this).val())
     days = $(this).data('days')
-    sub_milestone_id = 'milestone_' + $(this).data('id') + '_days_text'
+    sub_milestone_id = $(this).parents('.sub_milestone').attr('id')
     
-    update_milestone_days(days, sub_milestone_id)
+    updateMilestoneDays(days, sub_milestone_id)
     
     url = $(this).data('url')
-    update_sub_milestone(url, days)
+    updateSubMilestone(url, days)
 
 
-    milestone_id = 'milestone_' + $(this).data('parent-id')
-    current_milestone = $('#' + milestone_id)
-    sub_milestones = current_milestone.find($('.select_sub_milestone_days'))
+    milestone_id = $(this).parents('.milestone').attr('id')
+    
+    milestone_days = sumMilestoneDays(milestone_id)
+    updateMilestoneDays(milestone_days, milestone_id)  
+
+  # <!-- get_parent_milestone = (sub_milestone_id) ->  -->
+
+  sumMilestoneDays = (milestone_id) ->
+    sub_milestones = $('#' + milestone_id).find($('.days_select'))
     milestone_days = 0
     $(sub_milestones).each (index, elem) ->
       milestone_days += parseInt($(elem).data('days'))
     milestone_days_id = milestone_id + '_days'
-    update_milestone_days(milestone_days, milestone_days_id)  
+    return milestone_days
 
-  # <!-- get_parent_milestone = (sub_milestone_id) ->
+  $(".delete_sub_milestone_link").click ->
+    milestone_id = $(this).parents('.milestone').attr('id')
+    days = sumMilestoneDays(milestone_id)
+    updateMilestoneDays(days, milestone_id)
 
-  # sum_sub_milestones_days = (milestone_id) ->  -->
-
-  update_sub_milestone = (url, days) ->
+  updateSubMilestone = (url, days) ->
     $.ajax
       url: url
       method: 'PATCH'
       dataType: 'script'
       data: { days: days },
 
-  update_milestone_days = (days, id) ->
-    $('#' + id).html('Planned for ' + String(days) + ' days')
+  updateMilestoneDays = (days, milestone_id) ->
+    milestone_id_sel = '#' + milestone_id
+    
+    $(milestone_id_sel).find('.days_text:first').html('Planned for ' + String(days) + ' days')
 
-  $(".select_sub_milestone_days").click ->
+
+
